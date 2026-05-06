@@ -1,19 +1,53 @@
 @import "tailwindcss";
 
 :root {
-  --background: #0b0b0f;
-  --card: #111118;
-  --border: #232330;
-  --text-main: #f5f7fa;
-  --text-secondary: #a1a1aa;
-  --accent: #7c3aed;
+    --background: #0b0b0f;
+    --card: #111118;
+    --border: #232330;
+    --text-main: #f5f7fa;
+    --text-secondary: #a1a1aa;
+    --accent: #7c3aed;
 }
 
 body {
-  margin: 0;
-  background-color: var(--background);
-  color: var(--text-main);
+    margin: 0;
+    background-color: var(--background);
+    color: var(--text-main);
 }
 html {
-  scroll-behavior: smooth;
+    scroll-behavior: smooth;
+}
+/* ===================== */
+/* Animated Gradient Text */
+/* ===================== */
+
+.gradient-text {
+    background: linear-gradient(
+        90deg,
+        #22c55e,
+        #3b82f6,
+        #8b5cf6,
+        #ec4899,
+        #f97316,
+        #22c55e
+    );
+    background-size: 300% 300%;
+    animation: gradientMove 7s ease infinite;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+@keyframes gradientMove {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
 }

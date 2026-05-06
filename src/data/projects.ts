@@ -1,29 +1,31 @@
 export const projects = [
   {
-    title: "Personal Portfolio",
+    title: "FinTrack Dashboard",
     description:
-      "A modern personal portfolio built with Next.js, TypeScript, and Tailwind CSS, focused on clean structure, responsive design, and a premium dark UI.",
-    tags: ["Next.js", "TypeScript", "Tailwind CSS"],
-    liveUrl: "",
-    githubUrl: "",
+      "A full-stack finance dashboard with authentication, transactions, budgets, charts, CSV export, Excel import, dark/light mode, and Supabase integration.",
+    tags: ["Next.js", "TypeScript", "Supabase", "Recharts"],
+    liveUrl: "https://mohamad-dashboard.vercel.app",
+    githubUrl: "https://github.com/DragonNight501/dashboard-app",
     image: "",
   },
+
   {
-    title: "Fullstack Practice App",
+    title: "Task Manager App",
     description:
-      "A practice fullstack application built to improve frontend structure, backend thinking, and component reusability in real-world workflows.",
-    tags: ["Next.js", "API Routes", "React"],
-    liveUrl: "",
-    githubUrl: "",
+      "A modern task management application with task creation, editing, deleting, drag-and-drop workflow, productivity organization, and responsive UI.",
+    tags: ["Next.js", "TypeScript", "Drag & Drop", "Productivity"],
+    liveUrl: "https://mohamad-dabbah-task.vercel.app",
+    githubUrl: "https://github.com/DragonNight501/task-management-system",
     image: "",
   },
+
   {
-    title: "Dashboard UI Concept",
+    title: "Taskwise AI",
     description:
-      "A modern dashboard concept with a dark theme, polished layout, reusable UI components, and better visual hierarchy.",
-    tags: ["UI", "Tailwind CSS", "Responsive Design"],
-    liveUrl: "",
-    githubUrl: "",
+      "An AI productivity app that transforms user goals into organized tasks using AI-generated planning, smart workflows, and task management features.",
+    tags: ["Next.js", "AI", "TypeScript", "OpenAI"],
+    liveUrl: "https://mohamad-hadi-taskwise-ai.vercel.app",
+    githubUrl: "https://github.com/DragonNight501/taskwise-ai",
     image: "",
   },
 ];
