@@ -6,7 +6,7 @@ export const projects = [
     tags: ["Next.js", "TypeScript", "Supabase", "Recharts"],
     liveUrl: "https://mohamad-dashboard.vercel.app",
     githubUrl: "https://github.com/DragonNight501/dashboard-app",
-    image: "",
+    image: "projects/table.png",
   },
 
   {
@@ -16,7 +16,7 @@ export const projects = [
     tags: ["Next.js", "TypeScript", "Drag & Drop", "Productivity"],
     liveUrl: "https://mohamad-dabbah-task.vercel.app",
     githubUrl: "https://github.com/DragonNight501/task-management-system",
-    image: "",
+    image: "projects/task-manger.png",
   },
 
   {
@@ -26,6 +26,6 @@ export const projects = [
     tags: ["Next.js", "AI", "TypeScript", "OpenAI"],
     liveUrl: "https://mohamad-hadi-taskwise-ai.vercel.app",
     githubUrl: "https://github.com/DragonNight501/taskwise-ai",
-    image: "",
+    image: "projects/Taskwise.png",
   },
 ];

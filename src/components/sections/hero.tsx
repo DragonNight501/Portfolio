@@ -43,6 +43,9 @@ export default function Hero() {
               <a href="#contact">
                 <Button variant="secondary">Contact Me</Button>
               </a>
+              <a href="/cv.pdf" download>
+                <Button variant="secondary">Download CV</Button>
+              </a>
             </div>
           </Reveal>
 
@@ -54,15 +57,20 @@ export default function Hero() {
                     <p className="text-sm text-[var(--text-secondary)]">
                       {siteConfig.heroCardTitle}
                     </p>
-                    <p className="mt-1 font-medium">{siteConfig.heroCardValue}</p>
+                    <p className="mt-1 font-medium">
+                      {siteConfig.heroCardValue}
+                    </p>
                   </div>
                   <div className="h-3 w-3 rounded-full bg-[var(--accent)]" />
                 </div>
 
                 <div className="rounded-3xl border border-[var(--border)] bg-gradient-to-br from-[var(--accent)]/20 to-white/5 p-6">
-                  <p className="text-sm text-[var(--text-secondary)]">Current Goal</p>
+                  <p className="text-sm text-[var(--text-secondary)]">
+                    Current Goal
+                  </p>
                   <h3 className="mt-3 text-2xl font-semibold leading-tight">
-                    Building modern fullstack projects with clean UI and solid structure.
+                    Building modern fullstack projects with clean UI and solid
+                    structure.
                   </h3>
                 </div>
 
@@ -71,14 +79,18 @@ export default function Hero() {
                     <p className="text-sm text-[var(--text-secondary)]">
                       {siteConfig.heroCardFocusLabel}
                     </p>
-                    <p className="mt-2 font-medium">{siteConfig.heroCardFocusValue}</p>
+                    <p className="mt-2 font-medium">
+                      {siteConfig.heroCardFocusValue}
+                    </p>
                   </div>
 
                   <div className="rounded-2xl border border-[var(--border)] bg-black/20 p-4">
                     <p className="text-sm text-[var(--text-secondary)]">
                       {siteConfig.heroCardStackLabel}
                     </p>
-                    <p className="mt-2 font-medium">{siteConfig.heroCardStackValue}</p>
+                    <p className="mt-2 font-medium">
+                      {siteConfig.heroCardStackValue}
+                    </p>
                   </div>
                 </div>
               </div>
