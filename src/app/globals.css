@@ -276,3 +276,34 @@ a[class*="button"]:hover::before,
     border-color: color-mix(in srgb, var(--accent) 45%, var(--border));
     box-shadow: 0 0 22px color-mix(in srgb, var(--accent) 14%, transparent);
 }
+/* ===================== */
+/* Skills Section Polish */
+/* ===================== */
+
+#skills .rounded-\[28px\] {
+    position: relative;
+    overflow: hidden;
+}
+
+#skills .rounded-\[28px\]::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        135deg,
+        color-mix(in srgb, var(--accent) 10%, transparent),
+        transparent 45%
+    );
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+}
+
+#skills .rounded-\[28px\]:hover::before {
+    opacity: 1;
+}
+
+#skills .rounded-full:hover {
+    background: color-mix(in srgb, var(--accent) 14%, black);
+    box-shadow: 0 0 18px color-mix(in srgb, var(--accent) 14%, transparent);
+}
