@@ -1,36 +1,158 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# ✨ Mohamad Hadi Portfolio
 
-## Getting Started
+A modern full-stack developer portfolio built with Next.js, TypeScript, Tailwind CSS, and Framer Motion.
 
-First, run the development server:
+🌐 Live Website  
+https://portfolio-mohamad-dabbah.vercel.app/
+
+---
+
+# 🚀 Features
+
+- Modern responsive UI
+- Smooth reveal animations
+- Premium dark design system
+- Interactive hover effects
+- Project showcase section
+- Contact form with email integration
+- Mobile optimized layout
+- Clean and reusable components
+- GitHub & live demo links
+
+---
+
+# 🛠 Tech Stack
+
+- Next.js
+- TypeScript
+- Tailwind CSS
+- Framer Motion
+- Resend
+- Vercel
+
+---
+
+# 📸 Screenshots
+
+## Hero Section
+
+![Hero](./public/projects/hero.png)
+
+---
+
+## Projects Section
+
+![Projects](./public/projects/projects.png)
+
+---
+
+## Contact Section
+
+![Contact](./public/projects/contact.png)
+
+---
+
+# 📂 Featured Projects
+
+## 💰 FinTrack Dashboard
+
+A modern finance dashboard with authentication, transactions, budgets, charts, CSV export, Excel import, dark/light mode, and Supabase integration.
+
+### Tech Stack
+
+- Next.js
+- TypeScript
+- Supabase
+- Recharts
+
+### Links
+
+🔗 Live Demo  
+https://mohamad-dashboard.vercel.app
+
+💻 GitHub  
+https://github.com/DragonNight501/dashboard-app
+
+---
+
+## ✅ Task Manager App
+
+A productivity-focused task management application with drag-and-drop workflow, editing, deleting, responsive UI, and clean organization system.
+
+### Tech Stack
+
+- Next.js
+- TypeScript
+- Drag & Drop
+
+### Links
+
+🔗 Live Demo  
+https://mohamad-dabbah-task.vercel.app
+
+💻 GitHub  
+https://github.com/DragonNight501/task-management-system
+
+---
+
+## 🤖 Taskwise AI
+
+An AI-powered productivity application that transforms goals into organized tasks using AI-generated planning and smart workflows.
+
+### Tech Stack
+
+- Next.js
+- OpenAI
+- TypeScript
+
+### Links
+
+🔗 Live Demo  
+https://mohamad-hadi-taskwise-ai.vercel.app
+
+💻 GitHub  
+https://github.com/DragonNight501/taskwise-ai
+
+---
+
+# ⚡ Getting Started
+
+## Clone the repository
+
+```bash
+git clone https://github.com/DragonNight501/my-portfolio.git
+```
+
+## Install dependencies
+
+```bash
+npm install
+```
+
+## Run development server
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+# 📬 Contact
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+📧 Email  
+hadi.90.h@gmail.com
 
-## Learn More
+💻 GitHub  
+https://github.com/DragonNight501
 
-To learn more about Next.js, take a look at the following resources:
+---
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+# 🌍 Deployment
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Deployed with Vercel.
 
-## Deploy on Vercel
+---
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+# ⭐ Notes
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+This portfolio was designed and developed to showcase real-world full-stack projects, modern UI/UX practices, responsive layouts, animations, and clean architecture using modern web technologies.
