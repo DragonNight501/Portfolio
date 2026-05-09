@@ -22,19 +22,21 @@ export default function ProjectCard({
   const hasGithubUrl = githubUrl.trim().length > 0;
 
   return (
-    <div className="group rounded-[28px] border border-[var(--border)] bg-[var(--card)] p-6 transition duration-300 hover:-translate-y-1 hover:border-white/20">
+    <div className="project-card group rounded-[28px] border border-[var(--border)] bg-[var(--card)] p-6 transition duration-300 hover:-translate-y-1 hover:border-white/20">
       {image ? (
-        <div className="mb-6 overflow-hidden rounded-[24px] border border-[var(--border)]">
+        <div className="project-image-wrap mb-6 overflow-hidden rounded-[24px] border border-[var(--border)]">
           <img
             src={image}
             alt={title}
-            className="h-48 w-full object-cover transition duration-300 group-hover:scale-[1.02]"
+            className="project-image h-48 w-full object-cover transition duration-300 group-hover:scale-[1.02]"
           />
         </div>
       ) : (
         <div className="mb-6 flex h-48 items-end rounded-[24px] bg-gradient-to-br from-[var(--accent)]/20 to-white/5 p-5 transition duration-300 group-hover:from-[var(--accent)]/30">
           <div>
-            <p className="text-sm text-[var(--text-secondary)]">Featured Project</p>
+            <p className="text-sm text-[var(--text-secondary)]">
+              Featured Project
+            </p>
             <h3 className="mt-2 text-xl font-semibold">{title}</h3>
           </div>
         </div>
