@@ -384,3 +384,21 @@ img {
     z-index: 1;
     pointer-events: none;
 }
+/* ===================== */
+/* Prevent Horizontal Scroll */
+/* ===================== */
+
+html,
+body {
+    max-width: 100%;
+    overflow-x: clip;
+}
+
+main {
+    overflow-x: clip;
+}
+
+#projects {
+    overflow-x: clip;
+    padding-inline: 1px;
+}
