@@ -307,3 +307,80 @@ a[class*="button"]:hover::before,
     background: color-mix(in srgb, var(--accent) 14%, black);
     box-shadow: 0 0 18px color-mix(in srgb, var(--accent) 14%, transparent);
 }
+/* ===================== */
+/* Custom Scrollbar */
+/* ===================== */
+
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: #0b0b0f;
+}
+
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(
+        180deg,
+        color-mix(in srgb, var(--accent) 80%, black 20%),
+        color-mix(in srgb, var(--accent) 45%, black 55%)
+    );
+
+    border-radius: 999px;
+
+    border: 2px solid #0b0b0f;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(
+        180deg,
+        color-mix(in srgb, var(--accent) 90%, white 10%),
+        color-mix(in srgb, var(--accent) 60%, black 40%)
+    );
+}
+/* ===================== */
+/* Text Selection */
+/* ===================== */
+
+::selection {
+    background: color-mix(in srgb, var(--accent) 45%, black);
+    color: white;
+}
+
+::-moz-selection {
+    background: color-mix(in srgb, var(--accent) 45%, black);
+    color: white;
+}
+/* ===================== */
+/* Image Rendering Polish */
+/* ===================== */
+
+img {
+    image-rendering: auto;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+}
+
+.project-image-wrap img {
+    transform: translateZ(0);
+    will-change: transform;
+}
+
+/* soft image fade */
+
+.project-image-wrap {
+    position: relative;
+}
+
+.project-image-wrap::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        180deg,
+        rgba(255, 255, 255, 0.02),
+        transparent 20%
+    );
+    z-index: 1;
+    pointer-events: none;
+}
