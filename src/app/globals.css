@@ -13,6 +13,8 @@ body {
     margin: 0;
     background-color: var(--background);
     color: var(--text-main);
+    font-family: var(--font-inter), system-ui, -apple-system, "Segoe UI",
+        sans-serif;
 }
 html {
     scroll-behavior: smooth;

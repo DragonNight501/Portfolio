@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { Menu, X } from "lucide-react";
 import Container from "@/components/ui/container";
-import Button from "@/components/ui/button";
+import { buttonStyles } from "@/components/ui/button";
 import { siteConfig } from "@/data/site";
 import { cn } from "@/lib/utils";
 
@@ -38,14 +38,16 @@ export default function Navbar() {
           </nav>
 
           <div className="hidden md:block">
-            <a href="#contact">
-              <Button variant="secondary">Hire Me</Button>
+            <a href="#contact" className={buttonStyles("secondary")}>
+              Hire Me
             </a>
           </div>
 
           <button
             type="button"
-            aria-label="Toggle menu"
+            aria-label={isOpen ? "Close menu" : "Open menu"}
+            aria-expanded={isOpen}
+            aria-controls="mobile-menu"
             className="inline-flex h-11 w-11 items-center justify-center rounded-2xl border border-[var(--border)] bg-[var(--card)] md:hidden"
             onClick={() => setIsOpen((prev) => !prev)}
           >
@@ -54,6 +56,8 @@ export default function Navbar() {
         </div>
 
         <div
+          id="mobile-menu"
+          inert={!isOpen}
           className={cn(
             "overflow-hidden transition-all duration-300 md:hidden",
             isOpen ? "max-h-96 pb-6 opacity-100" : "max-h-0 opacity-0"
@@ -71,10 +75,12 @@ export default function Navbar() {
               </a>
             ))}
 
-            <a href="#contact" onClick={() => setIsOpen(false)}>
-              <Button variant="secondary" className="w-full">
-                Hire Me
-              </Button>
+            <a
+              href="#contact"
+              onClick={() => setIsOpen(false)}
+              className={buttonStyles("secondary", "w-full")}
+            >
+              Hire Me
             </a>
           </nav>
         </div>

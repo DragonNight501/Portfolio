@@ -5,6 +5,8 @@ export const siteConfig = {
   description:
     "I build modern, responsive, and user-friendly web applications using Next.js, TypeScript, and full-stack tools. I focus on clean UI, practical features, and real portfolio projects.",
 
+  url: "https://portfolio-mohamad-dabbah.vercel.app",
+
   email: "hadi.90.h@gmail.com",
   github: "https://github.com/DragonNight501",
 

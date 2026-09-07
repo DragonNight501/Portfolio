@@ -1,5 +1,5 @@
 import Container from "@/components/ui/container";
-import Button from "@/components/ui/button";
+import { buttonStyles } from "@/components/ui/button";
 import Reveal from "@/components/ui/reveal";
 import { siteConfig } from "@/data/site";
 import { ArrowRight, Sparkles } from "lucide-react";
@@ -33,18 +33,13 @@ export default function Hero() {
             </div>
 
             <div className="flex flex-wrap gap-4">
-              <a href="#projects">
-                <Button className="gap-2">
-                  View Projects
-                  <ArrowRight className="h-4 w-4" />
-                </Button>
+              <a href="#projects" className={buttonStyles("primary", "gap-2")}>
+                View Projects
+                <ArrowRight className="h-4 w-4" />
               </a>
 
-              <a href="#contact">
-                <Button variant="secondary">Contact Me</Button>
-              </a>
-              <a href="/cv.pdf" download>
-                <Button variant="secondary">Download CV</Button>
+              <a href="#contact" className={buttonStyles("secondary")}>
+                Contact Me
               </a>
             </div>
           </Reveal>

@@ -8,7 +8,7 @@ import Contact from "@/components/sections/contact";
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-[var(--background)] text-[var(--text-main)]">
+    <main id="main" className="min-h-screen bg-[var(--background)] text-[var(--text-main)]">
       <Navbar />
       <Hero />
       <About />
