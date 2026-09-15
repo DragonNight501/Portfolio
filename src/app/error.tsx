@@ -16,9 +16,9 @@ export default function Error({
   }, [error]);
 
   return (
-    <main className="flex min-h-screen items-center bg-[var(--background)] text-[var(--text-main)]">
+    <main className="flex min-h-screen items-center bg-ink text-fg">
       <Container className="text-center">
-        <p className="text-sm font-medium uppercase tracking-[0.2em] text-[var(--accent)]">
+        <p className="font-mono text-xs uppercase tracking-[0.2em] text-accent">
           Error
         </p>
 
@@ -26,7 +26,7 @@ export default function Error({
           Something went wrong
         </h1>
 
-        <p className="mx-auto mt-4 max-w-xl leading-8 text-[var(--text-secondary)]">
+        <p className="mx-auto mt-4 max-w-xl leading-8 text-muted">
           An unexpected error occurred while rendering this page.
         </p>
 

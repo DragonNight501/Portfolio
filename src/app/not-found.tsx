@@ -4,9 +4,9 @@ import Container from "@/components/ui/container";
 
 export default function NotFound() {
   return (
-    <main className="flex min-h-screen items-center bg-[var(--background)] text-[var(--text-main)]">
+    <main className="flex min-h-screen items-center bg-ink text-fg">
       <Container className="text-center">
-        <p className="text-sm font-medium uppercase tracking-[0.2em] text-[var(--accent)]">
+        <p className="font-mono text-xs uppercase tracking-[0.2em] text-accent">
           404
         </p>
 
@@ -14,7 +14,7 @@ export default function NotFound() {
           This page does not exist
         </h1>
 
-        <p className="mx-auto mt-4 max-w-xl leading-8 text-[var(--text-secondary)]">
+        <p className="mx-auto mt-4 max-w-xl leading-8 text-muted">
           The link may be outdated or mistyped. Everything else is still on the
           home page.
         </p>

@@ -1,6 +1,6 @@
 # ✨ Mohamad Hadi Portfolio
 
-A modern full-stack developer portfolio built with Next.js, TypeScript, Tailwind CSS, and Framer Motion.
+The portfolio of a developer with a Computer Science background, built with Next.js, TypeScript, Tailwind CSS, and Framer Motion.
 
 🌐 Live Website  
 https://portfolio-mohamad-dabbah.vercel.app/
@@ -9,15 +9,13 @@ https://portfolio-mohamad-dabbah.vercel.app/
 
 # 🚀 Features
 
-- Modern responsive UI
-- Smooth reveal animations
-- Premium dark design system
-- Interactive hover effects
-- Project showcase section
-- Contact form with email integration
-- Mobile optimized layout
-- Clean and reusable components
-- GitHub & live demo links
+- Computer Science–focused design: system layers, CS foundations and theory applied to projects
+- Interactive "What happens when you open a website?" walkthrough (DNS → TCP → TLS → HTTP → server → database → rendering)
+- Project case cards with the concepts used under the hood
+- Contact form with email delivery, rate limiting and spam protection
+- SEO metadata, generated Open Graph image, sitemap and robots.txt
+- Accessible navigation (keyboard tabs, skip link, reduced-motion support)
+- Fully responsive dark design
 
 ---
 

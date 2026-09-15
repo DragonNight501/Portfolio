@@ -16,12 +16,12 @@ export default function OpenGraphImage() {
           flexDirection: "column",
           justifyContent: "center",
           padding: "80px",
-          background: "linear-gradient(135deg, #0b0b0f 0%, #1a1030 100%)",
+          background: "linear-gradient(135deg, #07080b 0%, #0b1d24 100%)",
           color: "#f5f7fa",
           fontFamily: "sans-serif",
         }}
       >
-        <div style={{ fontSize: 30, color: "#a78bfa", letterSpacing: 6 }}>
+        <div style={{ fontSize: 30, color: "#5ee7f5", letterSpacing: 6 }}>
           {siteConfig.title.toUpperCase()}
         </div>
         <div
@@ -35,7 +35,7 @@ export default function OpenGraphImage() {
           {siteConfig.name}
         </div>
         <div style={{ marginTop: 28, fontSize: 32, color: "#a1a1aa" }}>
-          Next.js · TypeScript · Tailwind CSS
+          Networks · Operating Systems · Databases · Web
         </div>
       </div>
     ),

@@ -1,55 +1,52 @@
 import Container from "@/components/ui/container";
 import SectionTitle from "@/components/ui/section-title";
 import Reveal from "@/components/ui/reveal";
-import { siteConfig } from "@/data/site";
+import { principles } from "@/data/site";
 
 export default function About() {
   return (
-    <section id="about" className="py-24">
+    <section id="about" className="border-t border-line py-24 md:py-32">
       <Container>
-        <div className="grid gap-12 md:grid-cols-2 md:items-center">
+        <div className="grid gap-14 lg:grid-cols-[1fr_1.1fr]">
           <Reveal>
-            <div>
-              <SectionTitle
-                eyebrow="About Me"
-                title={siteConfig.aboutTitle}
-                description={siteConfig.aboutDescription}
-              />
-            </div>
+            <SectionTitle
+              index="01"
+              eyebrow="About"
+              title="A computer scientist who builds for the web."
+            />
           </Reveal>
 
-          <Reveal delay={0.1}>
-            <div className="rounded-[28px] border border-[var(--border)] bg-[var(--card)] p-8">
-              <div className="space-y-6">
-                <p className="leading-8 text-[var(--text-secondary)]">
-                  I am currently learning frontend and backend development step by
-                  step, while focusing on building real portfolio projects that
-                  reflect modern design and practical coding skills.
+          <Reveal delay={0.08}>
+            <div className="space-y-5 text-base leading-8 text-muted md:text-lg">
+              <p>
+                My background is in{" "}
+                <span className="text-fg">Computer Science</span>, so I see
+                software as one part of a larger system: data travelling
+                through networks, processes sharing memory, queries hitting
+                indexes, and users on the other end of it all.
+              </p>
+              <p>
+                Programming is how I build things. Understanding how computers,
+                networks and databases actually work is what lets me reason
+                about <span className="text-fg">why</span> something is slow,
+                insecure or fragile — and fix the cause instead of the symptom.
+              </p>
+            </div>
+          </Reveal>
+        </div>
+
+        <div className="mt-16 grid gap-px overflow-hidden rounded-2xl border border-line bg-line md:grid-cols-3">
+          {principles.map((principle, index) => (
+            <Reveal key={principle.title} delay={index * 0.06} className="h-full">
+              <div className="h-full bg-surface p-7">
+                <p className="font-mono text-xs text-accent">
+                  0{index + 1}
                 </p>
-
-                <p className="leading-8 text-[var(--text-secondary)]">
-                  My goal is to become a strong fullstack developer who can build
-                  fast, responsive, and visually impressive web applications.
-                </p>
-
-                <div className="grid grid-cols-2 gap-4 pt-2">
-                  <div className="rounded-2xl border border-[var(--border)] bg-black/20 p-4">
-                    <p className="text-2xl font-bold">03+</p>
-                    <p className="mt-2 text-sm text-[var(--text-secondary)]">
-                      Practice Projects
-                    </p>
-                  </div>
-
-                  <div className="rounded-2xl border border-[var(--border)] bg-black/20 p-4">
-                    <p className="text-2xl font-bold">100%</p>
-                    <p className="mt-2 text-sm text-[var(--text-secondary)]">
-                      Learning Commitment
-                    </p>
-                  </div>
-                </div>
+                <h3 className="mt-4 text-lg font-semibold">{principle.title}</h3>
+                <p className="mt-3 leading-7 text-muted">{principle.text}</p>
               </div>
-            </div>
-          </Reveal>
+            </Reveal>
+          ))}
         </div>
       </Container>
     </section>

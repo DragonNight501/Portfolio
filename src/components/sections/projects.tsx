@@ -6,27 +6,21 @@ import { projects } from "@/data/projects";
 
 export default function Projects() {
   return (
-    <section id="projects" className="py-24">
+    <section id="projects" className="border-t border-line py-24 md:py-32">
       <Container>
-        <Reveal className="mb-14">
+        <Reveal>
           <SectionTitle
+            index="04"
             eyebrow="Projects"
-            title="Selected work and practice projects"
-            description="These projects reflect my current learning journey in fullstack development, modern UI building, and structured project organization."
+            title="Theory, applied."
+            description="Deployed applications where the fundamentals show up in practice — for each one, the concepts that did the real work."
           />
         </Reveal>
 
-        <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+        <div className="mt-14 space-y-6">
           {projects.map((project, index) => (
-            <Reveal key={project.title} delay={index * 0.08}>
-              <ProjectCard
-                title={project.title}
-                description={project.description}
-                tags={project.tags}
-                liveUrl={project.liveUrl}
-                githubUrl={project.githubUrl}
-                image={project.image}
-              />
+            <Reveal key={project.title} delay={0.05}>
+              <ProjectCard index={index} {...project} />
             </Reveal>
           ))}
         </div>

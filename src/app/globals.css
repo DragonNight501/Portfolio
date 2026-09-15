@@ -1,406 +1,97 @@
 @import "tailwindcss";
 
-:root {
-    --background: #0b0b0f;
-    --card: #111118;
-    --border: #232330;
-    --text-main: #f5f7fa;
-    --text-secondary: #a1a1aa;
-    --accent: #7c3aed;
+@theme inline {
+  --color-ink: #07080b;
+  --color-surface: #0d0f14;
+  --color-surface-2: #131720;
+  --color-line: #1f2430;
+  --color-line-strong: #2d3342;
+  --color-fg: #e8eaef;
+  --color-muted: #8b92a0;
+  --color-accent: #5ee7f5;
+  --color-accent-strong: #22d3ee;
+  --color-violet: #a78bfa;
+
+  --font-sans: var(--font-inter), system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-mono: var(--font-jetbrains), ui-monospace, "SFMono-Regular", Menlo, monospace;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 5rem;
+  background-color: var(--color-ink);
 }
 
 body {
-    margin: 0;
-    background-color: var(--background);
-    color: var(--text-main);
-    font-family: var(--font-inter), system-ui, -apple-system, "Segoe UI",
-        sans-serif;
-}
-html {
-    scroll-behavior: smooth;
-}
-/* ===================== */
-/* Project Card Border Trail */
-/* ===================== */
-
-.project-card {
-    position: relative;
-    overflow: visible;
-    isolation: isolate;
-    transition:
-        transform 0.3s ease,
-        box-shadow 0.3s ease;
+  margin: 0;
+  background-color: var(--color-ink);
+  color: var(--color-fg);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  overflow-x: clip;
 }
 
-.project-card:hover {
-    transform: translateY(-4px);
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
 
-    background: linear-gradient(
-        180deg,
-        color-mix(in srgb, var(--accent) 10%, var(--card)),
-        var(--card)
-    );
-
-    border-color: color-mix(in srgb, var(--accent) 35%, var(--border));
-
-    box-shadow:
-        0 18px 60px rgba(0, 0, 0, 0.28),
-        0 0 26px color-mix(in srgb, var(--accent) 22%, transparent),
-        inset 0 1px 0 rgba(255, 255, 255, 0.04);
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }
 
-.project-card::before {
-    content: "";
-    position: absolute;
-    inset: -3px;
-    z-index: -2;
-    border-radius: 31px;
-    background: conic-gradient(
-        from 0deg,
-        transparent 0deg,
-        transparent 65deg,
-        color-mix(in srgb, var(--accent) 75%, black 25%) 88deg,
-        color-mix(in srgb, var(--accent) 55%, transparent) 105deg,
-        transparent 140deg,
-        transparent 360deg
-    );
-    opacity: 0;
-    filter: blur(8px);
-    animation: projectBorderTrail 4s linear infinite;
-    transition: opacity 0.3s ease;
-    pointer-events: none;
+/* Blueprint grid used behind hero and section headers. */
+@utility bg-grid {
+  background-image:
+    linear-gradient(to right, rgb(255 255 255 / 0.045) 1px, transparent 1px),
+    linear-gradient(to bottom, rgb(255 255 255 / 0.045) 1px, transparent 1px);
+  background-size: 56px 56px;
+  mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, black 30%, transparent 75%);
 }
 
-.project-card::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    z-index: -1;
-    border-radius: 28px;
-    background: var(--card);
-    pointer-events: none;
+@utility text-gradient {
+  background: linear-gradient(90deg, var(--color-accent), var(--color-violet));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
 }
 
-.project-card:hover::before {
-    opacity: 1;
+::selection {
+  background: rgb(34 211 238 / 0.3);
+  color: #fff;
 }
-
-.project-image-wrap {
-    overflow: hidden;
-}
-
-@keyframes projectBorderTrail {
-    to {
-        transform: rotate(360deg);
-    }
-}
-/* ===================== */
-/* Premium Hero Accent */
-/* ===================== */
-
-section:first-of-type h1 span {
-    background: linear-gradient(
-        90deg,
-        var(--accent),
-        #60a5fa,
-        #a78bfa,
-        var(--accent)
-    );
-    background-size: 220% 220%;
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-    animation: heroGradientFlow 7s ease-in-out infinite;
-}
-
-@keyframes heroGradientFlow {
-    0% {
-        background-position: 0% 50%;
-    }
-
-    50% {
-        background-position: 100% 50%;
-    }
-
-    100% {
-        background-position: 0% 50%;
-    }
-}
-/* ===================== */
-/* Navbar Polish */
-/* ===================== */
-
-header a {
-    position: relative;
-}
-
-header nav a::after {
-    content: "";
-    position: absolute;
-    left: 0;
-    bottom: -6px;
-    width: 0%;
-    height: 2px;
-    border-radius: 999px;
-    background: var(--accent);
-    transition: width 0.25s ease;
-}
-
-header nav a:hover::after {
-    width: 100%;
-}
-
-header > div > div > a:first-child {
-    background: linear-gradient(
-        90deg,
-        var(--text-main),
-        var(--accent),
-        var(--text-main)
-    );
-    background-size: 220% 220%;
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-    animation: navLogoFlow 8s ease-in-out infinite;
-}
-
-@keyframes navLogoFlow {
-    0% {
-        background-position: 0% 50%;
-    }
-
-    50% {
-        background-position: 100% 50%;
-    }
-
-    100% {
-        background-position: 0% 50%;
-    }
-}
-/* ===================== */
-/* Button Polish */
-/* ===================== */
-
-button,
-a[class*="button"],
-.button {
-    position: relative;
-    overflow: hidden;
-    transition:
-        transform 0.25s ease,
-        box-shadow 0.25s ease,
-        background 0.25s ease,
-        border-color 0.25s ease;
-}
-
-button:hover,
-a[class*="button"]:hover,
-.button:hover {
-    transform: translateY(-2px);
-
-    box-shadow:
-        0 10px 30px rgba(0, 0, 0, 0.25),
-        0 0 18px color-mix(in srgb, var(--accent) 18%, transparent);
-}
-
-/* soft shine */
-
-button::before,
-a[class*="button"]::before,
-.button::before {
-    content: "";
-
-    position: absolute;
-
-    top: 0;
-    left: -120%;
-
-    width: 70%;
-    height: 100%;
-
-    background: linear-gradient(
-        110deg,
-        transparent,
-        rgba(255, 255, 255, 0.12),
-        transparent
-    );
-
-    transform: skewX(-20deg);
-
-    transition: left 0.7s ease;
-}
-
-button:hover::before,
-a[class*="button"]:hover::before,
-.button:hover::before {
-    left: 140%;
-}
-/* ===================== */
-/* Contact Section Polish */
-/* ===================== */
-
-#contact .rounded-\[32px\] {
-    position: relative;
-    overflow: hidden;
-}
-
-#contact .rounded-\[32px\]::before {
-    content: "";
-    position: absolute;
-    inset: -40%;
-    background:
-        radial-gradient(
-            circle at 20% 20%,
-            color-mix(in srgb, var(--accent) 18%, transparent),
-            transparent 30%
-        ),
-        radial-gradient(
-            circle at 80% 70%,
-            rgba(96, 165, 250, 0.12),
-            transparent 28%
-        );
-    opacity: 0.7;
-    filter: blur(40px);
-    pointer-events: none;
-}
-
-#contact .rounded-\[32px\] > * {
-    position: relative;
-    z-index: 1;
-}
-
-#contact input:focus,
-#contact textarea:focus {
-    color: var(--text-main);
-}
-
-#contact form > div:focus-within {
-    border-color: color-mix(in srgb, var(--accent) 45%, var(--border));
-    box-shadow: 0 0 22px color-mix(in srgb, var(--accent) 14%, transparent);
-}
-/* ===================== */
-/* Skills Section Polish */
-/* ===================== */
-
-#skills .rounded-\[28px\] {
-    position: relative;
-    overflow: hidden;
-}
-
-#skills .rounded-\[28px\]::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(
-        135deg,
-        color-mix(in srgb, var(--accent) 10%, transparent),
-        transparent 45%
-    );
-    opacity: 0;
-    transition: opacity 0.3s ease;
-    pointer-events: none;
-}
-
-#skills .rounded-\[28px\]:hover::before {
-    opacity: 1;
-}
-
-#skills .rounded-full:hover {
-    background: color-mix(in srgb, var(--accent) 14%, black);
-    box-shadow: 0 0 18px color-mix(in srgb, var(--accent) 14%, transparent);
-}
-/* ===================== */
-/* Custom Scrollbar */
-/* ===================== */
 
 ::-webkit-scrollbar {
-    width: 10px;
+  width: 10px;
 }
 
 ::-webkit-scrollbar-track {
-    background: #0b0b0f;
+  background: var(--color-ink);
 }
 
 ::-webkit-scrollbar-thumb {
-    background: linear-gradient(
-        180deg,
-        color-mix(in srgb, var(--accent) 80%, black 20%),
-        color-mix(in srgb, var(--accent) 45%, black 55%)
-    );
-
-    border-radius: 999px;
-
-    border: 2px solid #0b0b0f;
+  background: var(--color-line-strong);
+  border: 2px solid var(--color-ink);
+  border-radius: 999px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-    background: linear-gradient(
-        180deg,
-        color-mix(in srgb, var(--accent) 90%, white 10%),
-        color-mix(in srgb, var(--accent) 60%, black 40%)
-    );
-}
-/* ===================== */
-/* Text Selection */
-/* ===================== */
-
-::selection {
-    background: color-mix(in srgb, var(--accent) 45%, black);
-    color: white;
+  background: #3d4557;
 }
 
-::-moz-selection {
-    background: color-mix(in srgb, var(--accent) 45%, black);
-    color: white;
-}
-/* ===================== */
-/* Image Rendering Polish */
-/* ===================== */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
 
-img {
-    image-rendering: auto;
-    backface-visibility: hidden;
-    -webkit-backface-visibility: hidden;
-}
-
-.project-image-wrap img {
-    transform: translateZ(0);
-    will-change: transform;
-}
-
-/* soft image fade */
-
-.project-image-wrap {
-    position: relative;
-}
-
-.project-image-wrap::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(
-        180deg,
-        rgba(255, 255, 255, 0.02),
-        transparent 20%
-    );
-    z-index: 1;
-    pointer-events: none;
-}
-/* ===================== */
-/* Prevent Horizontal Scroll */
-/* ===================== */
-
-html,
-body {
-    max-width: 100%;
-    overflow-x: clip;
-}
-
-main {
-    overflow-x: clip;
-}
-
-#projects {
-    overflow-x: clip;
-    padding-inline: 1px;
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }

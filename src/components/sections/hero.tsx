@@ -1,98 +1,123 @@
+import { ArrowRight } from "lucide-react";
+import GithubIcon from "@/components/ui/github-icon";
 import Container from "@/components/ui/container";
 import { buttonStyles } from "@/components/ui/button";
 import Reveal from "@/components/ui/reveal";
-import { siteConfig } from "@/data/site";
-import { ArrowRight, Sparkles } from "lucide-react";
+import { siteConfig, systemLayers } from "@/data/site";
+import { foundations } from "@/data/foundations";
+import { projects } from "@/data/projects";
+
+const stats = [
+  { value: String(foundations.length), label: "core CS areas" },
+  { value: String(systemLayers.length), label: "system layers" },
+  { value: String(projects.length), label: "deployed projects" },
+];
 
 export default function Hero() {
   return (
-    <section className="relative overflow-hidden py-20 md:py-32">
-      <Container>
-        <div className="grid items-center gap-10 md:grid-cols-2">
-          <Reveal className="space-y-8">
-            <div className="inline-flex items-center gap-2 rounded-full border border-[var(--border)] bg-[var(--card)] px-4 py-2 text-sm text-[var(--text-secondary)]">
-              <Sparkles className="h-4 w-4 text-[var(--accent)]" />
-              {siteConfig.heroBadge}
-            </div>
+    <section className="relative overflow-hidden pt-16 pb-24 md:pt-24 md:pb-32">
+      <div className="bg-grid pointer-events-none absolute inset-0" aria-hidden="true" />
+      <div
+        className="pointer-events-none absolute -top-40 left-1/2 h-[480px] w-[900px] -translate-x-1/2 rounded-full bg-accent-strong/10 blur-[120px]"
+        aria-hidden="true"
+      />
 
-            <div className="space-y-4">
-              <p className="text-sm uppercase tracking-[0.25em] text-[var(--text-secondary)]">
-                {siteConfig.name}
-              </p>
+      <Container className="relative">
+        <div className="grid items-center gap-14 lg:grid-cols-[1.15fr_1fr]">
+          <Reveal>
+            <p className="inline-flex items-center gap-2 rounded-full border border-line-strong bg-surface/80 px-3 py-1.5 font-mono text-xs text-muted">
+              <span className="relative flex h-2 w-2">
+                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-accent opacity-60" />
+                <span className="relative inline-flex h-2 w-2 rounded-full bg-accent" />
+              </span>
+              Open to opportunities
+            </p>
 
-              <h1 className="max-w-3xl text-4xl font-bold leading-tight md:text-6xl">
-                {siteConfig.heroTitleTop}
-                <span className="block text-[var(--accent)]">
-                  {siteConfig.heroTitleBottom}
-                </span>
-              </h1>
+            <p className="mt-8 font-mono text-sm text-accent">
+              {siteConfig.name}
+            </p>
 
-              <p className="max-w-2xl text-base leading-8 text-[var(--text-secondary)] md:text-lg">
-                {siteConfig.description}
-              </p>
-            </div>
+            <h1 className="mt-4 text-4xl font-semibold leading-[1.05] tracking-tight text-balance sm:text-5xl md:text-6xl">
+              I understand the whole system,{" "}
+              <span className="text-gradient">not just the code.</span>
+            </h1>
 
-            <div className="flex flex-wrap gap-4">
-              <a href="#projects" className={buttonStyles("primary", "gap-2")}>
-                View Projects
+            <p className="mt-6 max-w-xl text-base leading-7 text-muted md:text-lg md:leading-8">
+              {siteConfig.description}
+            </p>
+
+            <div className="mt-9 flex flex-wrap gap-3">
+              <a href="#foundations" className={buttonStyles("primary")}>
+                Explore my foundations
                 <ArrowRight className="h-4 w-4" />
               </a>
-
-              <a href="#contact" className={buttonStyles("secondary")}>
-                Contact Me
+              <a href="#projects" className={buttonStyles("secondary")}>
+                View projects
+              </a>
+              <a
+                href={siteConfig.github}
+                target="_blank"
+                rel="noreferrer"
+                aria-label="GitHub profile"
+                className={buttonStyles("ghost", "px-3")}
+              >
+                <GithubIcon className="h-5 w-5" />
               </a>
             </div>
+
+            <dl className="mt-12 grid max-w-md grid-cols-3 gap-6 border-t border-line pt-6">
+              {stats.map((stat) => (
+                <div key={stat.label}>
+                  <dt className="sr-only">{stat.label}</dt>
+                  <dd className="font-mono text-3xl font-semibold text-fg">
+                    {stat.value.padStart(2, "0")}
+                  </dd>
+                  <dd className="mt-1 text-xs text-muted">{stat.label}</dd>
+                </div>
+              ))}
+            </dl>
           </Reveal>
 
-          <Reveal delay={0.15} className="relative">
-            <div className="rounded-[32px] border border-[var(--border)] bg-[var(--card)] p-6 shadow-2xl">
-              <div className="space-y-4">
-                <div className="flex items-center justify-between rounded-2xl border border-[var(--border)] bg-black/20 p-4">
-                  <div>
-                    <p className="text-sm text-[var(--text-secondary)]">
-                      {siteConfig.heroCardTitle}
-                    </p>
-                    <p className="mt-1 font-medium">
-                      {siteConfig.heroCardValue}
-                    </p>
-                  </div>
-                  <div className="h-3 w-3 rounded-full bg-[var(--accent)]" />
+          <Reveal delay={0.12}>
+            <figure className="rounded-2xl border border-line-strong bg-surface/90 shadow-2xl shadow-black/40">
+              <div className="flex items-center justify-between border-b border-line px-5 py-3">
+                <div className="flex gap-1.5" aria-hidden="true">
+                  <span className="h-2.5 w-2.5 rounded-full bg-line-strong" />
+                  <span className="h-2.5 w-2.5 rounded-full bg-line-strong" />
+                  <span className="h-2.5 w-2.5 rounded-full bg-line-strong" />
                 </div>
-
-                <div className="rounded-3xl border border-[var(--border)] bg-gradient-to-br from-[var(--accent)]/20 to-white/5 p-6">
-                  <p className="text-sm text-[var(--text-secondary)]">
-                    Current Goal
-                  </p>
-                  <h3 className="mt-3 text-2xl font-semibold leading-tight">
-                    Building modern fullstack projects with clean UI and solid
-                    structure.
-                  </h3>
-                </div>
-
-                <div className="grid grid-cols-2 gap-4">
-                  <div className="rounded-2xl border border-[var(--border)] bg-black/20 p-4">
-                    <p className="text-sm text-[var(--text-secondary)]">
-                      {siteConfig.heroCardFocusLabel}
-                    </p>
-                    <p className="mt-2 font-medium">
-                      {siteConfig.heroCardFocusValue}
-                    </p>
-                  </div>
-
-                  <div className="rounded-2xl border border-[var(--border)] bg-black/20 p-4">
-                    <p className="text-sm text-[var(--text-secondary)]">
-                      {siteConfig.heroCardStackLabel}
-                    </p>
-                    <p className="mt-2 font-medium">
-                      {siteConfig.heroCardStackValue}
-                    </p>
-                  </div>
-                </div>
+                <figcaption className="font-mono text-xs text-muted">
+                  the-stack.txt
+                </figcaption>
               </div>
-            </div>
 
-            <div className="absolute -left-8 top-10 h-24 w-24 rounded-full bg-[var(--accent)]/20 blur-3xl" />
-            <div className="absolute -bottom-6 right-0 h-32 w-32 rounded-full bg-[var(--accent)]/10 blur-3xl" />
+              <ol className="p-3">
+                {systemLayers.map((layer, index) => (
+                  <li
+                    key={layer.name}
+                    className="group grid grid-cols-[2.5rem_1fr] items-center gap-3 rounded-xl px-3 py-3 transition hover:bg-surface-2"
+                  >
+                    <span className="font-mono text-xs text-muted transition group-hover:text-accent">
+                      L{systemLayers.length - index}
+                    </span>
+                    <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
+                      <div>
+                        <p className="font-medium text-fg">{layer.name}</p>
+                        <p className="text-sm text-muted">{layer.detail}</p>
+                      </div>
+                      <p className="font-mono text-xs text-muted/80 transition group-hover:text-accent">
+                        {layer.tools}
+                      </p>
+                    </div>
+                  </li>
+                ))}
+              </ol>
+
+              <p className="border-t border-line px-5 py-3 font-mono text-xs text-muted">
+                <span className="text-accent">$</span> from transistors to
+                interfaces — every layer matters
+              </p>
+            </figure>
           </Reveal>
         </div>
       </Container>

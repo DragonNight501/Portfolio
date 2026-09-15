@@ -84,10 +84,10 @@ export default function ContactForm() {
 
   return (
     <form onSubmit={handleSubmit} className="space-y-4" noValidate>
-      <div className="rounded-2xl border border-[var(--border)] bg-black/20 p-4">
+      <div className="rounded-xl border border-line bg-ink/60 p-4 transition focus-within:border-accent/60">
         <label
           htmlFor="name"
-          className="mb-2 block text-sm text-[var(--text-secondary)]"
+          className="mb-2 block font-mono text-xs text-muted"
         >
           Name
         </label>
@@ -101,14 +101,14 @@ export default function ContactForm() {
           value={form.name}
           onChange={handleChange}
           placeholder="Your name"
-          className="w-full bg-transparent text-white outline-none placeholder:text-[var(--text-secondary)]"
+          className="w-full bg-transparent text-fg outline-none placeholder:text-muted/60"
         />
       </div>
 
-      <div className="rounded-2xl border border-[var(--border)] bg-black/20 p-4">
+      <div className="rounded-xl border border-line bg-ink/60 p-4 transition focus-within:border-accent/60">
         <label
           htmlFor="email"
-          className="mb-2 block text-sm text-[var(--text-secondary)]"
+          className="mb-2 block font-mono text-xs text-muted"
         >
           Email
         </label>
@@ -122,14 +122,14 @@ export default function ContactForm() {
           value={form.email}
           onChange={handleChange}
           placeholder="you@example.com"
-          className="w-full bg-transparent text-white outline-none placeholder:text-[var(--text-secondary)]"
+          className="w-full bg-transparent text-fg outline-none placeholder:text-muted/60"
         />
       </div>
 
-      <div className="rounded-2xl border border-[var(--border)] bg-black/20 p-4">
+      <div className="rounded-xl border border-line bg-ink/60 p-4 transition focus-within:border-accent/60">
         <label
           htmlFor="message"
-          className="mb-2 block text-sm text-[var(--text-secondary)]"
+          className="mb-2 block font-mono text-xs text-muted"
         >
           Message
         </label>
@@ -143,7 +143,7 @@ export default function ContactForm() {
           onChange={handleChange}
           placeholder="Tell me about your project..."
           rows={5}
-          className="w-full resize-none bg-transparent text-white outline-none placeholder:text-[var(--text-secondary)]"
+          className="w-full resize-none bg-transparent text-fg outline-none placeholder:text-muted/60"
         />
       </div>
 
@@ -170,7 +170,7 @@ export default function ContactForm() {
       <div role="status" aria-live="polite">
         {status.type !== "idle" ? (
           <div
-            className={`rounded-2xl border p-4 text-sm ${
+            className={`rounded-xl border p-4 text-sm ${
               status.type === "success"
                 ? "border-green-500/30 bg-green-500/10 text-green-300"
                 : "border-red-500/30 bg-red-500/10 text-red-300"

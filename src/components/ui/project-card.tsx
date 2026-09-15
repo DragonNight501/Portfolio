@@ -1,94 +1,99 @@
 import Image from "next/image";
-import { buttonStyles } from "@/components/ui/button";
-import { ExternalLink, Code } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
+import GithubIcon from "@/components/ui/github-icon";
+import type { Project } from "@/data/projects";
 
-type ProjectCardProps = {
-  title: string;
-  description: string;
-  tags: string[];
-  liveUrl: string;
-  githubUrl: string;
-  image?: string;
+type ProjectCardProps = Project & {
+  index: number;
 };
 
 export default function ProjectCard({
+  index,
   title,
   description,
+  concepts,
   tags,
   liveUrl,
   githubUrl,
   image,
 }: ProjectCardProps) {
-  const hasLiveUrl = liveUrl.trim().length > 0;
-  const hasGithubUrl = githubUrl.trim().length > 0;
-
   return (
-    <div className="project-card group rounded-[28px] border border-[var(--border)] bg-[var(--card)] p-6 transition duration-300 hover:-translate-y-1 hover:border-white/20">
-      {image ? (
-        <div className="project-image-wrap mb-6 overflow-hidden rounded-[24px] border border-[var(--border)]">
+    <article className="group grid overflow-hidden rounded-2xl border border-line bg-surface transition duration-300 hover:border-line-strong md:grid-cols-[1.05fr_1fr]">
+      <div className="relative overflow-hidden border-b border-line bg-ink md:border-r md:border-b-0">
+        {image ? (
           <Image
             src={image}
             alt={`Screenshot of ${title}`}
-            width={640}
-            height={384}
-            sizes="(min-width: 1280px) 384px, (min-width: 768px) 50vw, 100vw"
-            className="project-image h-48 w-full object-cover transition duration-300 group-hover:scale-[1.02]"
+            width={960}
+            height={600}
+            sizes="(min-width: 768px) 50vw, 100vw"
+            className="h-full min-h-60 w-full object-cover object-top opacity-90 transition duration-500 group-hover:scale-[1.02] group-hover:opacity-100"
           />
+        ) : (
+          <div className="bg-grid h-full min-h-60" />
+        )}
+        <span className="absolute top-4 left-4 rounded-md border border-line-strong bg-ink/80 px-2 py-1 font-mono text-xs text-muted backdrop-blur">
+          {String(index + 1).padStart(2, "0")}
+        </span>
+      </div>
+
+      <div className="flex flex-col p-6 md:p-8">
+        <h3 className="text-2xl font-semibold tracking-tight">{title}</h3>
+        <p className="mt-3 leading-7 text-muted">{description}</p>
+
+        <div className="mt-6">
+          <p className="font-mono text-xs uppercase tracking-[0.15em] text-accent">
+            Under the hood
+          </p>
+          <ul className="mt-3 space-y-2">
+            {concepts.map((concept) => (
+              <li key={concept} className="flex gap-3 text-sm text-fg/90">
+                <span className="mt-2 h-1 w-1 shrink-0 rounded-full bg-accent" aria-hidden="true" />
+                {concept}
+              </li>
+            ))}
+          </ul>
         </div>
-      ) : (
-        <div className="mb-6 flex h-48 items-end rounded-[24px] bg-gradient-to-br from-[var(--accent)]/20 to-white/5 p-5 transition duration-300 group-hover:from-[var(--accent)]/30">
-          <div>
-            <p className="text-sm text-[var(--text-secondary)]">
-              Featured Project
-            </p>
-          </div>
-        </div>
-      )}
 
-      <div className="space-y-4">
-        <h3 className="text-xl font-semibold">{title}</h3>
-
-        <p className="leading-8 text-[var(--text-secondary)]">{description}</p>
-
-        <div className="flex flex-wrap gap-3">
+        <ul className="mt-6 flex flex-wrap gap-2">
           {tags.map((tag) => (
-            <span
+            <li
               key={tag}
-              className="rounded-full border border-[var(--border)] bg-black/20 px-4 py-2 text-sm text-[var(--text-secondary)] transition hover:border-white/20 hover:text-white"
+              className="rounded-md border border-line bg-ink/60 px-2 py-1 font-mono text-[11px] text-muted"
             >
               {tag}
-            </span>
+            </li>
           ))}
-        </div>
+        </ul>
 
-        <div className="flex flex-wrap gap-3 pt-2">
-          {hasLiveUrl ? (
+        <div className="mt-auto flex flex-wrap gap-5 pt-8 text-sm font-medium">
+          {liveUrl ? (
             <a
               href={liveUrl}
               target="_blank"
               rel="noreferrer"
               aria-label={`Open the live demo of ${title}`}
-              className={buttonStyles("primary", "gap-2")}
+              className="inline-flex items-center gap-1.5 text-accent transition hover:text-fg"
             >
-              Live Demo
-              <ExternalLink className="h-4 w-4" />
+              Live demo
+              <ArrowUpRight className="h-4 w-4" />
             </a>
           ) : null}
 
-          {hasGithubUrl ? (
+          {githubUrl ? (
             <a
               href={githubUrl}
               target="_blank"
               rel="noreferrer"
               aria-label={`Open the source code of ${title} on GitHub`}
-              className={buttonStyles("secondary", "gap-2")}
+              className="inline-flex items-center gap-1.5 text-muted transition hover:text-fg"
             >
-              GitHub
-              <Code className="h-4 w-4" />
+              <GithubIcon className="h-4 w-4" />
+              Source
             </a>
           ) : null}
         </div>
       </div>
-    </div>
+    </article>
   );
 }
