@@ -247,41 +247,48 @@ export const de: Dictionary = {
     underTheHood: "Unter der Haube",
     liveDemo: "Live-Demo",
     source: "Quellcode",
+    previewHint: "Zum Durchscrollen der Seite mit der Maus über die Vorschau fahren",
     screenshotAlt: "Screenshot von {title}",
     liveDemoLabel: "Live-Demo von {title} öffnen",
     sourceLabel: "Quellcode von {title} auf GitHub öffnen",
     items: {
       fintrack: {
-        title: "FinTrack Dashboard",
+        title: "FinTrack",
+        category: "Full-Stack · Finanzen",
+        highlight: "Ohne Konto ausprobieren",
         description:
-          "Ein Full-Stack-Finanz-Dashboard mit Authentifizierung, Transaktionen, Budgets, Diagrammen, CSV-Export, Excel-Import sowie hellem und dunklem Modus.",
+          "Ein Finanz-Dashboard mit Cashflow- und Kategoriediagrammen, monatlichen Budgets sowie Excel- und CSV-Import und -Export – dazu ein Demo-Modus, der vollständig im Browser läuft.",
         concepts: [
-          "Authentifizierung & Sitzungsverwaltung",
+          "Authentifizierung & Row-Level Security (Supabase)",
           "Relationale Datenmodellierung (PostgreSQL)",
-          "Datenaggregation für Visualisierungen",
-          "Einlesen von CSV- und Excel-Dateien",
-        ],
-      },
-      taskManager: {
-        title: "Task Manager App",
-        description:
-          "Eine Aufgabenverwaltung zum Anlegen, Bearbeiten und Löschen von Aufgaben – mit Drag-and-Drop-Workflow und responsiver Oberfläche.",
-        concepts: [
-          "CRUD-Operationen & Datenfluss",
-          "Clientseitiges State-Management",
-          "Geordnete Listen & Sortierlogik",
-          "Responsives Layout",
+          "Tabellen einlesen: Datumsformate, Gebietsschemata, Validierung",
+          "Monatlichen Cashflow für Diagramme aggregieren",
         ],
       },
       taskwise: {
         title: "Taskwise AI",
+        category: "KI · Produktivität",
+        highlight: "Mit Google Gemini",
         description:
-          "Eine KI-gestützte Produktivitäts-App, die aus einem Ziel einen strukturierten Aufgabenplan erstellt.",
+          "Beschreiben Sie ein Ziel, und Gemini macht daraus einen geordneten Plan konkreter Aufgaben – in der Sprache des Ziels – auf einem Board, das Sie direkt abarbeiten können.",
         concepts: [
-          "Anbindung einer externen LLM-API",
-          "Strukturierte Ausgaben aus Prompts",
-          "Asynchrone Verarbeitung von Anfragen",
-          "Zerlegung komplexer Probleme",
+          "LLM-Anbindung mit strukturierter JSON-Ausgabe",
+          "Prompt-Design & Eingabevalidierung",
+          "Rate Limiting für eine kostenpflichtige API",
+          "Robuster Fallback, wenn das Modell nicht verfügbar ist",
+        ],
+      },
+      taskManager: {
+        title: "Task Management System",
+        category: "Frontend · Produktivität",
+        highlight: "Per Tastatur und Touch bedienbar",
+        description:
+          "Ein Kanban-Board mit Drag-and-Drop, Pfeil-Steuerung für Touchscreens, Rückgängig-Funktion für destruktive Aktionen, Suche und Live-Fortschritt – gespeichert im Browser.",
+        concepts: [
+          "Clientseitiger Zustand mit useSyncExternalStore",
+          "Lokale Daten speichern und migrieren",
+          "Barrierefreie Alternativen zu Drag-and-Drop",
+          "Rückgängig statt Bestätigungsdialog",
         ],
       },
     },

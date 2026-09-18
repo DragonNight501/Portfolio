@@ -1,157 +1,86 @@
-# ✨ Mohamad Hadi Portfolio
+# Mohamad Hadi Dabbah Aljimal — Portfolio
 
-The portfolio of a developer with a Computer Science background, built with Next.js, TypeScript, Tailwind CSS, and Framer Motion.
+A Computer Science background with a full-stack practice. This portfolio is built to show how systems work end to end — networks, operating systems, databases and security — and the projects that put those fundamentals to work.
 
-🌐 Live Website  
-https://portfolio-mohamad-dabbah.vercel.app/
+**Live:** [English](https://portfolio-mohamad-dabbah.vercel.app/en) · [Deutsch](https://portfolio-mohamad-dabbah.vercel.app/de)
 
----
+<p align="center">
+  <img src="./docs/screenshots/hero.jpg" width="900" alt="Portfolio hero section with the system-layers panel" />
+</p>
 
-# 🚀 Features
+## Highlights
 
-- Computer Science–focused design: system layers, CS foundations and theory applied to projects
-- Interactive "What happens when you open a website?" walkthrough (DNS → TCP → TLS → HTTP → server → database → rendering)
-- Project case cards with the concepts used under the hood
-- Contact form with email delivery, rate limiting and spam protection
-- SEO metadata, generated Open Graph image, sitemap and robots.txt
-- Accessible navigation (keyboard tabs, skip link, reduced-motion support)
-- Bilingual: English and German (`/en`, `/de`) with automatic language detection, a language switcher and hreflang SEO
-- Fully responsive light design
+- **Computer Science first** — a six-layer system diagram and eight foundation areas, from algorithms to IT security.
+- **Interactive walkthrough** — *What actually happens when you open a website?* follows one request through DNS, TCP, TLS, HTTP, the server, the database and rendering. Keyboard-accessible tabs.
+- **Project showcase** — each project sits in a browser frame with its real domain; hovering scrolls through a full-page screenshot of the live app.
+- **Bilingual** — English and German at `/en` and `/de`, chosen from the browser language on first visit, switchable in the header, with `hreflang` alternates for search engines.
+- **Contact form** — sends email through Resend, with HTML escaping, a rate limit, a honeypot and localized error messages.
+- **SEO & sharing** — per-language metadata, generated Open Graph images, sitemap and robots.txt.
+- **Accessibility** — skip link, visible focus states, and full support for reduced-motion settings.
 
----
+<p align="center">
+  <img src="./docs/screenshots/systems.jpg" width="900" alt="Interactive walkthrough of a web request" />
+</p>
 
-# 🛠 Tech Stack
+<p align="center">
+  <img src="./docs/screenshots/projects.jpg" width="900" alt="Project showcase with browser-frame previews" />
+</p>
 
-- Next.js
-- TypeScript
-- Tailwind CSS
-- Framer Motion
-- Resend
-- Vercel
+## Featured projects
 
----
+| Project | What it shows | Links |
+| --- | --- | --- |
+| **FinTrack** | Full-stack finance dashboard: Supabase auth with row-level security, monthly budgets, cash-flow charts, Excel/CSV import and export, demo mode | [Try the demo](https://mohamad-dashboard.vercel.app/demo) · [Code](https://github.com/DragonNight501/dashboard-app) |
+| **Taskwise AI** | Goal → ordered task plan with Google Gemini, structured JSON output, rate limiting and a fallback | [Live](https://mohamad-hadi-taskwise-ai.vercel.app) · [Code](https://github.com/DragonNight501/taskwise-ai) |
+| **Task Management System** | Kanban board with drag and drop, touch and keyboard controls, undo and local persistence | [Live](https://mohamad-dabbah-task.vercel.app) · [Code](https://github.com/DragonNight501/task-management-system) |
 
-# 📸 Screenshots
+## Tech stack
 
-## Hero Section
+- Next.js 16 (App Router, `proxy.ts` for locale routing) · React 19 · TypeScript
+- Tailwind CSS v4 with a shared design system (also used by the three projects above)
+- Framer Motion · lucide-react
+- Resend for the contact form
+- Deployed on Vercel
 
-![Hero](./public/projects/hero.png)
-
----
-
-## Projects Section
-
-![Projects](./public/projects/projects.png)
-
----
-
-## Contact Section
-
-![Contact](./public/projects/contact.png)
-
----
-
-# 📂 Featured Projects
-
-## 💰 FinTrack Dashboard
-
-A modern finance dashboard with authentication, transactions, budgets, charts, CSV export, Excel import, dark/light mode, and Supabase integration.
-
-### Tech Stack
-
-- Next.js
-- TypeScript
-- Supabase
-- Recharts
-
-### Links
-
-🔗 Live Demo  
-https://mohamad-dashboard.vercel.app
-
-💻 GitHub  
-https://github.com/DragonNight501/dashboard-app
-
----
-
-## ✅ Task Manager App
-
-A productivity-focused task management application with drag-and-drop workflow, editing, deleting, responsive UI, and clean organization system.
-
-### Tech Stack
-
-- Next.js
-- TypeScript
-- Drag & Drop
-
-### Links
-
-🔗 Live Demo  
-https://mohamad-dabbah-task.vercel.app
-
-💻 GitHub  
-https://github.com/DragonNight501/task-management-system
-
----
-
-## 🤖 Taskwise AI
-
-An AI-powered productivity application that transforms goals into organized tasks using AI-generated planning and smart workflows.
-
-### Tech Stack
-
-- Next.js
-- OpenAI
-- TypeScript
-
-### Links
-
-🔗 Live Demo  
-https://mohamad-hadi-taskwise-ai.vercel.app
-
-💻 GitHub  
-https://github.com/DragonNight501/taskwise-ai
-
----
-
-# ⚡ Getting Started
-
-## Clone the repository
-
-```bash
-git clone https://github.com/DragonNight501/my-portfolio.git
-```
-
-## Install dependencies
+## Getting started
 
 ```bash
 npm install
-```
-
-## Run development server
-
-```bash
 npm run dev
 ```
 
----
+Open http://localhost:3000 — you are redirected to `/en` or `/de`.
 
-# 📬 Contact
+For the contact form, create `.env.local`:
 
-📧 Email  
-hadi.90.h@gmail.com
+```bash
+RESEND_API_KEY=your_resend_key
+CONTACT_EMAIL=where-messages-should-go@example.com
+```
 
-💻 GitHub  
-https://github.com/DragonNight501
+## Project structure
 
----
+```
+src/
+├── proxy.ts                        locale detection and redirects
+├── app/
+│   ├── [lang]/                     layout, page, OG image, error page
+│   ├── api/contact/route.ts        validation, rate limit, email
+│   ├── global-not-found.tsx        bilingual 404
+│   └── sitemap.ts · robots.ts
+├── components/
+│   ├── layout/                     navbar, language switcher, footer
+│   ├── sections/                   hero, about, foundations, request journey,
+│   │                               projects, toolbox, contact
+│   └── ui/                         buttons, project showcase, reveal, …
+├── data/                           links, tags and screenshots (no copy)
+└── i18n/dictionaries/              en.ts · de.ts — every visible string
+```
 
-# 🌍 Deployment
+### Editing content
 
-Deployed with Vercel.
+All text lives in `src/i18n/dictionaries/en.ts` and `de.ts`. The German dictionary is typed against the English one, so a missing translation fails the build. Project links, tags and screenshots are in `src/data/projects.ts`; screenshots are in `public/projects/`.
 
----
+## Author
 
-# ⭐ Notes
-
-This portfolio was designed and developed to showcase real-world full-stack projects, modern UI/UX practices, responsive layouts, animations, and clean architecture using modern web technologies.
+**Mohamad Hadi Dabbah Aljimal** · [GitHub](https://github.com/DragonNight501)

@@ -226,42 +226,49 @@ export const en = {
       "Deployed applications where the fundamentals show up in practice — for each one, the concepts that did the real work.",
     underTheHood: "Under the hood",
     liveDemo: "Live demo",
-    source: "Source",
+    source: "Source code",
+    previewHint: "Hover the preview to scroll through the page",
     screenshotAlt: "Screenshot of {title}",
     liveDemoLabel: "Open the live demo of {title}",
     sourceLabel: "Open the source code of {title} on GitHub",
     items: {
       fintrack: {
-        title: "FinTrack Dashboard",
+        title: "FinTrack",
+        category: "Full-stack · Finance",
+        highlight: "Try it without an account",
         description:
-          "A full-stack finance dashboard with authentication, transactions, budgets, charts, CSV export, Excel import and dark/light mode.",
+          "A finance dashboard with cash-flow and category charts, monthly budgets, Excel and CSV import and export — plus a demo mode that runs entirely in the browser.",
         concepts: [
-          "Authentication & session handling",
+          "Authentication & row-level security (Supabase)",
           "Relational data modeling (PostgreSQL)",
-          "Aggregating data for visualization",
-          "Parsing CSV and Excel files",
-        ],
-      },
-      taskManager: {
-        title: "Task Manager App",
-        description:
-          "A task management application with creating, editing and deleting tasks, a drag-and-drop workflow and a responsive interface.",
-        concepts: [
-          "CRUD operations & data flow",
-          "Client-side state management",
-          "Ordered lists & reordering logic",
-          "Responsive layout",
+          "Parsing spreadsheets: dates, locales, validation",
+          "Aggregating monthly cash flow for charts",
         ],
       },
       taskwise: {
         title: "Taskwise AI",
+        category: "AI · Productivity",
+        highlight: "Powered by Google Gemini",
         description:
-          "An AI productivity app that turns a goal into an organized plan of tasks using AI-generated planning.",
+          "Describe a goal and Gemini turns it into an ordered plan of concrete tasks — in the language of the goal — on a board you can work through.",
         concepts: [
-          "Integrating an external LLM API",
-          "Structured output from prompts",
-          "Asynchronous request handling",
-          "Problem decomposition",
+          "LLM integration with structured JSON output",
+          "Prompt design & input validation",
+          "Rate limiting a paid API",
+          "Graceful fallback when the model is unavailable",
+        ],
+      },
+      taskManager: {
+        title: "Task Management System",
+        category: "Frontend · Productivity",
+        highlight: "Keyboard- and touch-friendly",
+        description:
+          "A Kanban board with drag and drop, arrow controls for touch screens, undo for destructive actions, search and live progress — saved in the browser.",
+        concepts: [
+          "Client state with useSyncExternalStore",
+          "Persisting and migrating local data",
+          "Accessible alternatives to drag and drop",
+          "Undo instead of confirmation dialogs",
         ],
       },
     },

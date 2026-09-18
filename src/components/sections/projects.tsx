@@ -18,7 +18,7 @@ export default function Projects({ dict }: { dict: Dictionary["projects"] }) {
           />
         </Reveal>
 
-        <div className="mt-14 space-y-6">
+        <div className="mt-16 space-y-24 md:space-y-32">
           {projects.map((project, index) => (
             <Reveal key={project.id} delay={0.05}>
               <ProjectCard

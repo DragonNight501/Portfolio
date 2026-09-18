@@ -58,6 +58,12 @@ body::after {
     scroll-behavior: auto;
   }
 
+  /* Show scroll-reveal content immediately, without movement. */
+  [data-reveal] {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
   *,
   *::before,
   *::after {
