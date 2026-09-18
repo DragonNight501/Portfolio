@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Button from "@/components/ui/button";
+import type { ContactStatusCode, Dictionary } from "@/i18n/dictionaries/en";
 
 type FormState = {
   name: string;
@@ -17,7 +18,7 @@ const emptyForm: FormState = {
   company: "",
 };
 
-export default function ContactForm() {
+export default function ContactForm({ dict }: { dict: Dictionary["contact"]["form"] }) {
   const [form, setForm] = useState<FormState>(emptyForm);
 
   const [status, setStatus] = useState<{
@@ -56,26 +57,21 @@ export default function ContactForm() {
         body: JSON.stringify(form),
       });
 
-      const data = await response.json();
+      const data: { code?: string } = await response.json();
+      const code = (data.code && data.code in dict.status ? data.code : "unknown") as ContactStatusCode;
 
       if (!response.ok) {
-        setStatus({
-          type: "error",
-          message: data.message || "Something went wrong.",
-        });
+        setStatus({ type: "error", message: dict.status[code] });
         return;
       }
 
-      setStatus({
-        type: "success",
-        message: data.message || "Message sent successfully.",
-      });
+      setStatus({ type: "success", message: dict.status.success });
 
       setForm(emptyForm);
     } catch {
       setStatus({
         type: "error",
-        message: "Unable to send message. Please try again.",
+        message: dict.status.network,
       });
     } finally {
       setIsLoading(false);
@@ -89,7 +85,7 @@ export default function ContactForm() {
           htmlFor="name"
           className="mb-2 block font-mono text-[11px] uppercase tracking-[0.2em] text-faint"
         >
-          Name
+          {dict.name}
         </label>
         <input
           id="name"
@@ -100,7 +96,7 @@ export default function ContactForm() {
           autoComplete="name"
           value={form.name}
           onChange={handleChange}
-          placeholder="Your name"
+          placeholder={dict.namePlaceholder}
           className="w-full bg-transparent text-fg outline-none placeholder:text-faint"
         />
       </div>
@@ -110,7 +106,7 @@ export default function ContactForm() {
           htmlFor="email"
           className="mb-2 block font-mono text-[11px] uppercase tracking-[0.2em] text-faint"
         >
-          Email
+          {dict.email}
         </label>
         <input
           id="email"
@@ -121,7 +117,7 @@ export default function ContactForm() {
           autoComplete="email"
           value={form.email}
           onChange={handleChange}
-          placeholder="you@example.com"
+          placeholder={dict.emailPlaceholder}
           className="w-full bg-transparent text-fg outline-none placeholder:text-faint"
         />
       </div>
@@ -131,7 +127,7 @@ export default function ContactForm() {
           htmlFor="message"
           className="mb-2 block font-mono text-[11px] uppercase tracking-[0.2em] text-faint"
         >
-          Message
+          {dict.message}
         </label>
         <textarea
           id="message"
@@ -141,7 +137,7 @@ export default function ContactForm() {
           maxLength={5000}
           value={form.message}
           onChange={handleChange}
-          placeholder="Tell me about your project..."
+          placeholder={dict.messagePlaceholder}
           rows={5}
           className="w-full resize-none bg-transparent text-fg outline-none placeholder:text-faint"
         />
@@ -163,7 +159,7 @@ export default function ContactForm() {
 
       <div className="pt-2">
         <Button className="w-full" disabled={isLoading}>
-          {isLoading ? "Sending..." : "Send Message"}
+          {isLoading ? dict.sending : dict.submit}
         </Button>
       </div>
 

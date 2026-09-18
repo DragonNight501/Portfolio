@@ -1,11 +1,21 @@
 import { ImageResponse } from "next/og";
 import { siteConfig } from "@/data/site";
+import { defaultLocale, isLocale } from "@/i18n/config";
+import { getDictionary } from "@/i18n/get-dictionary";
 
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
-export const alt = `${siteConfig.name} — ${siteConfig.title}`;
+// `alt` must be static, so it stays language-neutral.
+export const alt = siteConfig.name;
 
-export default function OpenGraphImage() {
+export default async function OpenGraphImage({
+  params,
+}: {
+  params: Promise<{ lang: string }>;
+}) {
+  const { lang } = await params;
+  const dict = getDictionary(isLocale(lang) ? lang : defaultLocale);
+
   return new ImageResponse(
     (
       <div
@@ -22,7 +32,7 @@ export default function OpenGraphImage() {
         }}
       >
         <div style={{ fontSize: 30, color: "#4f46e5", letterSpacing: 6 }}>
-          {siteConfig.title.toUpperCase()}
+          {dict.meta.title.toUpperCase()}
         </div>
         <div
           style={{
@@ -35,7 +45,7 @@ export default function OpenGraphImage() {
           {siteConfig.name}
         </div>
         <div style={{ marginTop: 28, fontSize: 32, color: "#5a6376" }}>
-          Networks · Operating Systems · Databases · Web
+          {dict.meta.ogTagline}
         </div>
       </div>
     ),

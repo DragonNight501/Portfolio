@@ -7,10 +7,11 @@ import Container from "@/components/ui/container";
 import SectionTitle from "@/components/ui/section-title";
 import Reveal from "@/components/ui/reveal";
 import { buttonStyles } from "@/components/ui/button";
-import { requestJourney } from "@/data/request-journey";
+import type { Dictionary } from "@/i18n/get-dictionary";
 import { cn } from "@/lib/utils";
 
-export default function RequestJourney() {
+export default function RequestJourney({ dict }: { dict: Dictionary["systems"] }) {
+  const requestJourney = dict.steps;
   const [active, setActive] = useState(0);
   const tabRefs = useRef<(HTMLButtonElement | null)[]>([]);
   const step = requestJourney[active];
@@ -48,14 +49,14 @@ export default function RequestJourney() {
         <Reveal>
           <SectionTitle
             index="03"
-            eyebrow="Systems"
+            eyebrow={dict.eyebrow}
             title={
               <>
-                What actually happens when you{" "}
-                <span className="text-gradient">open a website?</span>
+                {dict.titleStart}
+                <span className="text-gradient">{dict.titleAccent}</span>
               </>
             }
-            description="A classic interview question — and a good test of whether someone understands the whole picture. Here is one request, followed through every layer."
+            description={dict.description}
           />
         </Reveal>
 
@@ -68,7 +69,7 @@ export default function RequestJourney() {
 
             <div
               role="tablist"
-              aria-label="Steps of a web request"
+              aria-label={dict.tablistLabel}
               aria-orientation="vertical"
               className="relative flex gap-1 overflow-x-auto [scrollbar-width:none] border-b border-line bg-surface-2/50 p-3 lg:flex-col lg:overflow-visible lg:border-r lg:border-b-0"
             >
@@ -135,7 +136,7 @@ export default function RequestJourney() {
               <div key={active} className="animate-[fadeIn_0.35s_ease-out]">
                 <div className="mt-8 flex flex-wrap items-center gap-2 font-mono text-xs">
                   <span className="text-faint">
-                    step {String(active + 1).padStart(2, "0")}/
+                    {dict.stepLabel} {String(active + 1).padStart(2, "0")}/
                     {String(requestJourney.length).padStart(2, "0")}
                   </span>
                   <span className="rounded-md border border-accent/35 bg-accent/10 px-2 py-1 text-accent">
@@ -156,7 +157,7 @@ export default function RequestJourney() {
 
                 <div className="mt-8">
                   <p className="font-mono text-[11px] uppercase tracking-[0.25em] text-faint">
-                    Concepts involved
+                    {dict.conceptsLabel}
                   </p>
                   <ul className="mt-3 flex flex-wrap gap-2">
                     {step.concepts.map((concept) => (
@@ -179,7 +180,7 @@ export default function RequestJourney() {
                   className={buttonStyles("secondary", "px-4 py-2")}
                 >
                   <ArrowLeft className="h-4 w-4" />
-                  Previous
+                  {dict.previous}
                 </button>
 
                 {active === lastIndex ? (
@@ -188,7 +189,7 @@ export default function RequestJourney() {
                     onClick={() => select(0)}
                     className={buttonStyles("secondary", "px-4 py-2")}
                   >
-                    Start over
+                    {dict.restart}
                   </button>
                 ) : (
                   <button
@@ -196,7 +197,7 @@ export default function RequestJourney() {
                     onClick={() => select(active + 1)}
                     className={buttonStyles("primary", "px-4 py-2")}
                   >
-                    Next step
+                    {dict.next}
                     <ArrowRight className="h-4 w-4" />
                   </button>
                 )}

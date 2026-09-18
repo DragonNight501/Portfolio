@@ -1,23 +1,23 @@
 import Container from "@/components/ui/container";
 import SectionTitle from "@/components/ui/section-title";
 import Reveal from "@/components/ui/reveal";
-import { foundations } from "@/data/foundations";
+import type { Dictionary } from "@/i18n/get-dictionary";
 
-export default function Foundations() {
+export default function Foundations({ dict }: { dict: Dictionary["foundations"] }) {
   return (
     <section id="foundations" className="border-t border-line py-24 md:py-32">
       <Container>
         <Reveal>
           <SectionTitle
             index="02"
-            eyebrow="Foundations"
-            title="The Computer Science behind the code."
-            description="The areas I studied in depth. They are the reason I can move between layers — from an index on a table to a TLS handshake — without treating any of them as magic."
+            eyebrow={dict.eyebrow}
+            title={dict.title}
+            description={dict.description}
           />
         </Reveal>
 
         <div className="mt-14 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-          {foundations.map((area, index) => (
+          {dict.areas.map((area, index) => (
             <Reveal key={area.title} delay={(index % 4) * 0.05} className="h-full">
               <article className="group card relative flex h-full flex-col overflow-hidden rounded-2xl p-6 transition duration-300 hover:-translate-y-1 hover:border-accent/40">
                 <span

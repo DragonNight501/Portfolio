@@ -15,7 +15,8 @@ https://portfolio-mohamad-dabbah.vercel.app/
 - Contact form with email delivery, rate limiting and spam protection
 - SEO metadata, generated Open Graph image, sitemap and robots.txt
 - Accessible navigation (keyboard tabs, skip link, reduced-motion support)
-- Fully responsive dark design
+- Bilingual: English and German (`/en`, `/de`) with automatic language detection, a language switcher and hreflang SEO
+- Fully responsive light design
 
 ---
 

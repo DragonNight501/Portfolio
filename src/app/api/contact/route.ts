@@ -31,6 +31,7 @@ export async function POST(request: Request) {
       return NextResponse.json(
         {
           success: false,
+          code: "rate_limited",
           message: "Too many messages. Please try again later.",
         },
         { status: 429, headers: { "Retry-After": String(limit.retryAfter) } },
@@ -43,6 +44,7 @@ export async function POST(request: Request) {
     if (String(body.company || "").trim().length > 0) {
       return NextResponse.json({
         success: true,
+        code: "success",
         message: "Message sent successfully.",
       });
     }
@@ -53,7 +55,7 @@ export async function POST(request: Request) {
 
     if (!name || !email || !message) {
       return NextResponse.json(
-        { success: false, message: "All fields are required." },
+        { success: false, code: "required", message: "All fields are required." },
         { status: 400 },
       );
     }
@@ -64,7 +66,7 @@ export async function POST(request: Request) {
       message.length > MAX_MESSAGE_LENGTH
     ) {
       return NextResponse.json(
-        { success: false, message: "One of the fields is too long." },
+        { success: false, code: "too_long", message: "One of the fields is too long." },
         { status: 400 },
       );
     }
@@ -73,21 +75,21 @@ export async function POST(request: Request) {
 
     if (!emailRegex.test(email)) {
       return NextResponse.json(
-        { success: false, message: "Please enter a valid email address." },
+        { success: false, code: "invalid_email", message: "Please enter a valid email address." },
         { status: 400 },
       );
     }
 
     if (message.length < 10) {
       return NextResponse.json(
-        { success: false, message: "Message must be at least 10 characters." },
+        { success: false, code: "message_too_short", message: "Message must be at least 10 characters." },
         { status: 400 },
       );
     }
 
     if (!process.env.RESEND_API_KEY || !process.env.CONTACT_EMAIL) {
       return NextResponse.json(
-        { success: false, message: "Email service is not configured." },
+        { success: false, code: "not_configured", message: "Email service is not configured." },
         { status: 500 },
       );
     }
@@ -119,20 +121,21 @@ export async function POST(request: Request) {
       console.error("RESEND_ERROR:", error);
 
       return NextResponse.json(
-        { success: false, message: "Failed to send message." },
+        { success: false, code: "send_failed", message: "Failed to send message." },
         { status: 500 },
       );
     }
 
     return NextResponse.json({
       success: true,
+      code: "success",
       message: "Message sent successfully.",
     });
   } catch (error) {
     console.error("CONTACT_ROUTE_ERROR:", error);
 
     return NextResponse.json(
-      { success: false, message: "Something went wrong. Please try again." },
+      { success: false, code: "unknown", message: "Something went wrong. Please try again." },
       { status: 500 },
     );
   }

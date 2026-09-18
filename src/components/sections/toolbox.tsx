@@ -1,9 +1,9 @@
 import Container from "@/components/ui/container";
 import SectionTitle from "@/components/ui/section-title";
 import Reveal from "@/components/ui/reveal";
-import { toolbox } from "@/data/toolbox";
+import type { Dictionary } from "@/i18n/get-dictionary";
 
-export default function Toolbox() {
+export default function Toolbox({ dict }: { dict: Dictionary["toolbox"] }) {
   return (
     <section id="toolbox" className="border-t border-line py-24 md:py-32">
       <Container>
@@ -11,14 +11,14 @@ export default function Toolbox() {
           <Reveal>
             <SectionTitle
               index="05"
-              eyebrow="Toolbox"
-              title="Tools change. Fundamentals transfer."
-              description="The technologies I currently use. Because they sit on concepts I already understand, picking up the next one is a matter of syntax, not starting over."
+              eyebrow={dict.eyebrow}
+              title={dict.title}
+              description={dict.description}
             />
           </Reveal>
 
           <div className="grid gap-4 sm:grid-cols-2">
-            {toolbox.map((group, index) => (
+            {dict.groups.map((group, index) => (
               <Reveal key={group.title} delay={index * 0.05} className="h-full">
                 <div className="card h-full rounded-2xl p-6">
                   <h3 className="font-mono text-[11px] uppercase tracking-[0.25em] text-accent">

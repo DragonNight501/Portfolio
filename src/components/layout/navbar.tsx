@@ -4,18 +4,26 @@ import { useState } from "react";
 import { Menu, X } from "lucide-react";
 import Container from "@/components/ui/container";
 import { buttonStyles } from "@/components/ui/button";
-import { navLinks, siteConfig } from "@/data/site";
+import LanguageSwitcher from "@/components/layout/language-switcher";
+import { sections, siteConfig } from "@/data/site";
+import type { Dictionary } from "@/i18n/get-dictionary";
+import type { Locale } from "@/i18n/config";
 import { cn } from "@/lib/utils";
 
-export default function Navbar() {
+type NavbarProps = {
+  lang: Locale;
+  dict: Dictionary["nav"];
+};
+
+export default function Navbar({ lang, dict }: NavbarProps) {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
     <header className="sticky top-0 z-50 border-b border-line bg-paper/80 backdrop-blur-xl">
       <Container>
-        <div className="flex h-16 items-center justify-between">
+        <div className="flex h-16 items-center justify-between gap-4">
           <a
-            href="#"
+            href={`/${lang}`}
             className="flex items-center gap-2.5 font-mono text-sm font-semibold tracking-tight"
           >
             <span className="chip grid h-8 w-8 place-items-center rounded-lg text-[11px]">
@@ -24,56 +32,57 @@ export default function Navbar() {
             {siteConfig.shortName}
           </a>
 
-          <nav aria-label="Main" className="hidden items-center gap-1 md:flex">
-            {navLinks.map((link) => (
+          <nav aria-label={dict.mainLabel} className="hidden items-center gap-1 lg:flex">
+            {sections.map((id) => (
               <a
-                key={link.label}
-                href={link.href}
+                key={id}
+                href={`#${id}`}
                 className="rounded-lg px-3 py-2 text-sm text-muted transition hover:bg-surface-2 hover:text-fg"
               >
-                {link.label}
+                {dict.links[id]}
               </a>
             ))}
           </nav>
 
-          <div className="hidden md:block">
-            <a href="#contact" className={buttonStyles("primary", "px-4 py-2")}>
-              Get in touch
-            </a>
-          </div>
+          <div className="flex items-center gap-3">
+            <LanguageSwitcher lang={lang} label={dict.languageLabel} />
 
-          <button
-            type="button"
-            aria-label={isOpen ? "Close menu" : "Open menu"}
-            aria-expanded={isOpen}
-            aria-controls="mobile-menu"
-            className="inline-flex h-10 w-10 items-center justify-center rounded-lg border border-line-strong bg-surface md:hidden"
-            onClick={() => setIsOpen((prev) => !prev)}
-          >
-            {isOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
-          </button>
+            <div className="hidden lg:block">
+              <a href="#contact" className={buttonStyles("primary", "px-4 py-2")}>
+                {dict.cta}
+              </a>
+            </div>
+
+            <button
+              type="button"
+              aria-label={isOpen ? dict.closeMenu : dict.openMenu}
+              aria-expanded={isOpen}
+              aria-controls="mobile-menu"
+              className="inline-flex h-10 w-10 items-center justify-center rounded-lg border border-line-strong bg-surface lg:hidden"
+              onClick={() => setIsOpen((prev) => !prev)}
+            >
+              {isOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+            </button>
+          </div>
         </div>
 
         <div
           id="mobile-menu"
           inert={!isOpen}
           className={cn(
-            "overflow-hidden transition-all duration-300 md:hidden",
-            isOpen ? "max-h-96 pb-5 opacity-100" : "max-h-0 opacity-0",
+            "overflow-hidden transition-all duration-300 lg:hidden",
+            isOpen ? "max-h-[28rem] pb-5 opacity-100" : "max-h-0 opacity-0",
           )}
         >
-          <nav
-            aria-label="Mobile"
-            className="card flex flex-col gap-1 rounded-xl p-3"
-          >
-            {navLinks.map((link) => (
+          <nav aria-label={dict.mobileLabel} className="card flex flex-col gap-1 rounded-xl p-3">
+            {sections.map((id) => (
               <a
-                key={link.label}
-                href={link.href}
+                key={id}
+                href={`#${id}`}
                 className="rounded-lg px-4 py-3 text-sm text-muted transition hover:bg-surface-2 hover:text-fg"
                 onClick={() => setIsOpen(false)}
               >
-                {link.label}
+                {dict.links[id]}
               </a>
             ))}
 
@@ -82,7 +91,7 @@ export default function Navbar() {
               onClick={() => setIsOpen(false)}
               className={buttonStyles("primary", "mt-2 w-full")}
             >
-              Get in touch
+              {dict.cta}
             </a>
           </nav>
         </div>

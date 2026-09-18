@@ -1,29 +1,28 @@
 import Image from "next/image";
 import { ArrowUpRight } from "lucide-react";
 import GithubIcon from "@/components/ui/github-icon";
-import type { Project } from "@/data/projects";
+import type { ProjectMeta } from "@/data/projects";
+import type { Dictionary } from "@/i18n/get-dictionary";
+import { format } from "@/lib/utils";
 
-type ProjectCardProps = Project & {
+type ProjectCardProps = {
   index: number;
+  project: ProjectMeta;
+  content: Dictionary["projects"]["items"][ProjectMeta["id"]];
+  labels: Dictionary["projects"];
 };
 
-export default function ProjectCard({
-  index,
-  title,
-  description,
-  concepts,
-  tags,
-  liveUrl,
-  githubUrl,
-  image,
-}: ProjectCardProps) {
+export default function ProjectCard({ index, project, content, labels }: ProjectCardProps) {
+  const { tags, liveUrl, githubUrl, image } = project;
+  const { title, description, concepts } = content;
+
   return (
     <article className="group card grid overflow-hidden rounded-2xl transition duration-300 hover:border-line-strong md:grid-cols-[1.05fr_1fr]">
       <div className="relative overflow-hidden border-b border-line bg-surface-2 md:border-r md:border-b-0">
         {image ? (
           <Image
             src={image}
-            alt={`Screenshot of ${title}`}
+            alt={format(labels.screenshotAlt, { title })}
             width={960}
             height={600}
             sizes="(min-width: 768px) 50vw, 100vw"
@@ -43,7 +42,7 @@ export default function ProjectCard({
 
         <div className="mt-6">
           <p className="font-mono text-[11px] uppercase tracking-[0.25em] text-accent">
-            Under the hood
+            {labels.underTheHood}
           </p>
           <ul className="mt-3 space-y-2">
             {concepts.map((concept) => (
@@ -72,10 +71,10 @@ export default function ProjectCard({
               href={liveUrl}
               target="_blank"
               rel="noreferrer"
-              aria-label={`Open the live demo of ${title}`}
+              aria-label={format(labels.liveDemoLabel, { title })}
               className="inline-flex items-center gap-1.5 text-accent transition hover:text-void"
             >
-              Live demo
+              {labels.liveDemo}
               <ArrowUpRight className="h-4 w-4" />
             </a>
           ) : null}
@@ -85,11 +84,11 @@ export default function ProjectCard({
               href={githubUrl}
               target="_blank"
               rel="noreferrer"
-              aria-label={`Open the source code of ${title} on GitHub`}
+              aria-label={format(labels.sourceLabel, { title })}
               className="inline-flex items-center gap-1.5 text-muted transition hover:text-fg"
             >
               <GithubIcon className="h-4 w-4" />
-              Source
+              {labels.source}
             </a>
           ) : null}
         </div>

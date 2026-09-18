@@ -5,17 +5,20 @@ import Reveal from "@/components/ui/reveal";
 import GithubIcon from "@/components/ui/github-icon";
 import ContactForm from "@/components/sections/contact-form";
 import { siteConfig } from "@/data/site";
+import type { Dictionary } from "@/i18n/get-dictionary";
 
-export default function Contact() {
+export default function Contact({ dict }: { dict: Dictionary["contact"] }) {
   const channels = [
     {
-      label: "Email",
+      id: "email",
+      label: dict.emailLabel,
       value: siteConfig.email,
       href: `mailto:${siteConfig.email}`,
       icon: <Mail className="h-4 w-4" />,
     },
     {
-      label: "GitHub",
+      id: "github",
+      label: dict.githubLabel,
       value: siteConfig.github.replace("https://", ""),
       href: siteConfig.github,
       icon: <GithubIcon className="h-4 w-4" />,
@@ -34,18 +37,18 @@ export default function Contact() {
           <Reveal>
             <SectionTitle
               index="06"
-              eyebrow="Contact"
-              title="Let's talk about your system."
-              description="Whether it is a role, a project or a technical question, I am happy to hear about it. I usually reply within a day or two."
+              eyebrow={dict.eyebrow}
+              title={dict.title}
+              description={dict.description}
             />
 
             <ul className="mt-10 space-y-3">
               {channels.map((channel) => (
-                <li key={channel.label}>
+                <li key={channel.id}>
                   <a
                     href={channel.href}
-                    target={channel.label === "GitHub" ? "_blank" : undefined}
-                    rel={channel.label === "GitHub" ? "noreferrer" : undefined}
+                    target={channel.id === "github" ? "_blank" : undefined}
+                    rel={channel.id === "github" ? "noreferrer" : undefined}
                     className="card flex items-center gap-4 rounded-xl p-4 transition hover:-translate-y-0.5 hover:border-accent/40"
                   >
                     <span className="chip grid h-10 w-10 place-items-center rounded-lg">
@@ -65,7 +68,7 @@ export default function Contact() {
 
           <Reveal delay={0.08}>
             <div className="card rounded-2xl p-6 md:p-8">
-              <ContactForm />
+              <ContactForm dict={dict.form} />
             </div>
           </Reveal>
         </div>

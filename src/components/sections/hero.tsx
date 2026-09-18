@@ -3,17 +3,20 @@ import Container from "@/components/ui/container";
 import GithubIcon from "@/components/ui/github-icon";
 import { buttonStyles } from "@/components/ui/button";
 import Reveal from "@/components/ui/reveal";
-import { siteConfig, systemLayers } from "@/data/site";
-import { foundations } from "@/data/foundations";
+import { siteConfig } from "@/data/site";
 import { projects } from "@/data/projects";
+import type { Dictionary } from "@/i18n/get-dictionary";
 
-const stats = [
-  { value: String(foundations.length), label: "core CS areas" },
-  { value: String(systemLayers.length), label: "system layers" },
-  { value: String(projects.length), label: "deployed projects" },
-];
+export default function Hero({ dict }: { dict: Dictionary }) {
+  const { hero } = dict;
+  const layers = hero.layers;
 
-export default function Hero() {
+  const stats = [
+    { value: dict.foundations.areas.length, label: hero.stats.areas },
+    { value: layers.length, label: hero.stats.layers },
+    { value: projects.length, label: hero.stats.projects },
+  ];
+
   return (
     <section className="relative overflow-hidden pt-16 pb-24 md:pt-24 md:pb-32">
       <div className="bg-grid pointer-events-none absolute inset-0" aria-hidden="true" />
@@ -34,7 +37,7 @@ export default function Hero() {
                 <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-accent opacity-70" />
                 <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-accent" />
               </span>
-              Open to opportunities
+              {hero.status}
             </p>
 
             <p className="mt-8 font-mono text-xs uppercase tracking-[0.3em] text-accent">
@@ -42,27 +45,27 @@ export default function Hero() {
             </p>
 
             <h1 className="mt-5 text-4xl font-semibold leading-[1.02] tracking-[-0.04em] text-balance sm:text-5xl md:text-[4.2rem]">
-              I understand the whole system,{" "}
-              <span className="text-gradient">not just the code.</span>
+              {hero.titleStart}{" "}
+              <span className="text-gradient">{hero.titleAccent}</span>
             </h1>
 
             <p className="mt-7 max-w-xl text-base leading-7 text-muted md:text-lg md:leading-8">
-              {siteConfig.description}
+              {dict.meta.description}
             </p>
 
             <div className="mt-9 flex flex-wrap items-center gap-3">
               <a href="#foundations" className={buttonStyles("primary")}>
-                Explore my foundations
+                {hero.primaryCta}
                 <ArrowRight className="h-4 w-4" />
               </a>
               <a href="#projects" className={buttonStyles("secondary")}>
-                View projects
+                {hero.secondaryCta}
               </a>
               <a
                 href={siteConfig.github}
                 target="_blank"
                 rel="noreferrer"
-                aria-label="GitHub profile"
+                aria-label={hero.githubLabel}
                 className={buttonStyles("ghost", "px-3")}
               >
                 <GithubIcon className="h-5 w-5" />
@@ -74,7 +77,7 @@ export default function Hero() {
                 <div key={stat.label}>
                   <dt className="sr-only">{stat.label}</dt>
                   <dd className="font-mono text-3xl font-medium tracking-tight">
-                    {stat.value.padStart(2, "0")}
+                    {String(stat.value).padStart(2, "0")}
                   </dd>
                   <dd className="mt-1 text-xs text-faint">{stat.label}</dd>
                 </div>
@@ -101,13 +104,13 @@ export default function Hero() {
               </div>
 
               <ol className="relative divide-y divide-line/70">
-                {systemLayers.map((layer, index) => (
+                {layers.map((layer, index) => (
                   <li
                     key={layer.name}
                     className="group grid grid-cols-[2.25rem_1fr] items-center gap-3 px-5 py-3.5 transition hover:bg-surface-2/70"
                   >
                     <span className="font-mono text-[11px] text-faint transition group-hover:text-accent">
-                      L{systemLayers.length - index}
+                      L{layers.length - index}
                     </span>
                     <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
                       <div>
@@ -123,8 +126,7 @@ export default function Hero() {
               </ol>
 
               <p className="relative border-t border-line bg-surface-2/60 px-5 py-3 font-mono text-[11px] tracking-tight text-faint">
-                <span className="text-accent">$</span> from transistors to
-                interfaces — every layer matters
+                <span className="text-accent">$</span> {hero.stackFooter}
               </p>
             </figure>
           </Reveal>

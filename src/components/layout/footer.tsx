@@ -1,7 +1,8 @@
 import Container from "@/components/ui/container";
 import { siteConfig } from "@/data/site";
+import type { Dictionary } from "@/i18n/get-dictionary";
 
-export default function Footer() {
+export default function Footer({ dict }: { dict: Dictionary["footer"] }) {
   const year = new Date().getFullYear();
 
   return (
@@ -10,7 +11,7 @@ export default function Footer() {
         <p>
           © {year} {siteConfig.name}
         </p>
-        <p>Next.js · TypeScript · Tailwind CSS — deployed on Vercel</p>
+        <p>{dict.builtWith}</p>
       </Container>
     </footer>
   );
