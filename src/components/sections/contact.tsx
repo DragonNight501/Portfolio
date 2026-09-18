@@ -48,7 +48,7 @@ export default function Contact() {
                     rel={channel.label === "GitHub" ? "noreferrer" : undefined}
                     className="card flex items-center gap-4 rounded-xl p-4 transition hover:-translate-y-0.5 hover:border-accent/40"
                   >
-                    <span className="inlay grid h-10 w-10 place-items-center rounded-lg text-white">
+                    <span className="chip grid h-10 w-10 place-items-center rounded-lg">
                       {channel.icon}
                     </span>
                     <span>

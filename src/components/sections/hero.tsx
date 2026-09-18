@@ -83,39 +83,38 @@ export default function Hero() {
           </Reveal>
 
           <Reveal delay={0.12}>
-            <figure className="inlay relative overflow-hidden rounded-2xl">
-              <div className="bg-grid-dark pointer-events-none absolute inset-0 opacity-60" aria-hidden="true" />
+            <figure className="panel relative overflow-hidden rounded-2xl">
               <div
-                className="pointer-events-none absolute -top-20 -right-10 h-56 w-56 rounded-full bg-accent-soft/25 blur-[70px]"
+                className="pointer-events-none absolute -top-24 -right-16 h-56 w-56 rounded-full bg-accent/12 blur-[70px]"
                 aria-hidden="true"
               />
 
-              <div className="relative flex items-center justify-between border-b border-white/10 px-5 py-3">
+              <div className="relative flex items-center justify-between border-b border-line bg-surface-2/60 px-5 py-3">
                 <div className="flex gap-1.5" aria-hidden="true">
-                  <span className="h-2 w-2 rounded-full bg-white/20" />
-                  <span className="h-2 w-2 rounded-full bg-white/20" />
-                  <span className="h-2 w-2 rounded-full bg-white/20" />
+                  <span className="h-2 w-2 rounded-full bg-line-strong" />
+                  <span className="h-2 w-2 rounded-full bg-line-strong" />
+                  <span className="h-2 w-2 rounded-full bg-line-strong" />
                 </div>
-                <figcaption className="font-mono text-[11px] tracking-tight text-white/45">
+                <figcaption className="font-mono text-[11px] tracking-tight text-faint">
                   the-stack.txt
                 </figcaption>
               </div>
 
-              <ol className="relative p-3">
+              <ol className="relative divide-y divide-line/70">
                 {systemLayers.map((layer, index) => (
                   <li
                     key={layer.name}
-                    className="group grid grid-cols-[2.25rem_1fr] items-center gap-3 rounded-xl px-3 py-3 transition hover:bg-white/[0.06]"
+                    className="group grid grid-cols-[2.25rem_1fr] items-center gap-3 px-5 py-3.5 transition hover:bg-surface-2/70"
                   >
-                    <span className="font-mono text-[11px] text-white/35 transition group-hover:text-cyan">
+                    <span className="font-mono text-[11px] text-faint transition group-hover:text-accent">
                       L{systemLayers.length - index}
                     </span>
                     <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
                       <div>
-                        <p className="font-medium text-white/90">{layer.name}</p>
-                        <p className="text-sm text-white/45">{layer.detail}</p>
+                        <p className="font-medium tracking-tight">{layer.name}</p>
+                        <p className="text-sm text-muted">{layer.detail}</p>
                       </div>
-                      <p className="font-mono text-[11px] text-white/30 transition group-hover:text-white/60">
+                      <p className="font-mono text-[11px] text-faint transition group-hover:text-accent">
                         {layer.tools}
                       </p>
                     </div>
@@ -123,8 +122,8 @@ export default function Hero() {
                 ))}
               </ol>
 
-              <p className="relative border-t border-white/10 px-5 py-3 font-mono text-[11px] tracking-tight text-white/40">
-                <span className="text-cyan">$</span> from transistors to
+              <p className="relative border-t border-line bg-surface-2/60 px-5 py-3 font-mono text-[11px] tracking-tight text-faint">
+                <span className="text-accent">$</span> from transistors to
                 interfaces — every layer matters
               </p>
             </figure>

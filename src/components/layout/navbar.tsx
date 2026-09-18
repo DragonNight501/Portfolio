@@ -18,7 +18,7 @@ export default function Navbar() {
             href="#"
             className="flex items-center gap-2.5 font-mono text-sm font-semibold tracking-tight"
           >
-            <span className="inlay grid h-8 w-8 place-items-center rounded-lg text-[11px]">
+            <span className="chip grid h-8 w-8 place-items-center rounded-lg text-[11px]">
               {">_"}
             </span>
             {siteConfig.shortName}

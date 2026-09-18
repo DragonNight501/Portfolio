@@ -32,7 +32,7 @@ export default function ProjectCard({
         ) : (
           <div className="bg-grid h-full min-h-60" />
         )}
-        <span className="inlay absolute top-4 left-4 rounded-md px-2 py-1 font-mono text-[11px] tracking-tight">
+        <span className="chip absolute top-4 left-4 rounded-md px-2 py-1 font-mono text-[11px] tracking-tight backdrop-blur">
           {String(index + 1).padStart(2, "0")}
         </span>
       </div>
