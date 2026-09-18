@@ -16,12 +16,12 @@ export default function OpenGraphImage() {
           flexDirection: "column",
           justifyContent: "center",
           padding: "80px",
-          background: "linear-gradient(135deg, #07080b 0%, #0b1d24 100%)",
-          color: "#f5f7fa",
+          background: "linear-gradient(135deg, #ffffff 0%, #e7ebf5 55%, #dfe7f7 100%)",
+          color: "#0d1117",
           fontFamily: "sans-serif",
         }}
       >
-        <div style={{ fontSize: 30, color: "#5ee7f5", letterSpacing: 6 }}>
+        <div style={{ fontSize: 30, color: "#4f46e5", letterSpacing: 6 }}>
           {siteConfig.title.toUpperCase()}
         </div>
         <div
@@ -34,7 +34,7 @@ export default function OpenGraphImage() {
         >
           {siteConfig.name}
         </div>
-        <div style={{ marginTop: 28, fontSize: 32, color: "#a1a1aa" }}>
+        <div style={{ marginTop: 28, fontSize: 32, color: "#5a6376" }}>
           Networks · Operating Systems · Databases · Web
         </div>
       </div>

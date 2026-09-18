@@ -84,10 +84,10 @@ export default function ContactForm() {
 
   return (
     <form onSubmit={handleSubmit} className="space-y-4" noValidate>
-      <div className="rounded-xl border border-line bg-ink/60 p-4 transition focus-within:border-accent/60">
+      <div className="rounded-xl border border-line bg-surface-2/60 p-4 transition focus-within:border-accent/60 focus-within:bg-surface">
         <label
           htmlFor="name"
-          className="mb-2 block font-mono text-xs text-muted"
+          className="mb-2 block font-mono text-[11px] uppercase tracking-[0.2em] text-faint"
         >
           Name
         </label>
@@ -101,14 +101,14 @@ export default function ContactForm() {
           value={form.name}
           onChange={handleChange}
           placeholder="Your name"
-          className="w-full bg-transparent text-fg outline-none placeholder:text-muted/60"
+          className="w-full bg-transparent text-fg outline-none placeholder:text-faint"
         />
       </div>
 
-      <div className="rounded-xl border border-line bg-ink/60 p-4 transition focus-within:border-accent/60">
+      <div className="rounded-xl border border-line bg-surface-2/60 p-4 transition focus-within:border-accent/60 focus-within:bg-surface">
         <label
           htmlFor="email"
-          className="mb-2 block font-mono text-xs text-muted"
+          className="mb-2 block font-mono text-[11px] uppercase tracking-[0.2em] text-faint"
         >
           Email
         </label>
@@ -122,14 +122,14 @@ export default function ContactForm() {
           value={form.email}
           onChange={handleChange}
           placeholder="you@example.com"
-          className="w-full bg-transparent text-fg outline-none placeholder:text-muted/60"
+          className="w-full bg-transparent text-fg outline-none placeholder:text-faint"
         />
       </div>
 
-      <div className="rounded-xl border border-line bg-ink/60 p-4 transition focus-within:border-accent/60">
+      <div className="rounded-xl border border-line bg-surface-2/60 p-4 transition focus-within:border-accent/60 focus-within:bg-surface">
         <label
           htmlFor="message"
-          className="mb-2 block font-mono text-xs text-muted"
+          className="mb-2 block font-mono text-[11px] uppercase tracking-[0.2em] text-faint"
         >
           Message
         </label>
@@ -143,7 +143,7 @@ export default function ContactForm() {
           onChange={handleChange}
           placeholder="Tell me about your project..."
           rows={5}
-          className="w-full resize-none bg-transparent text-fg outline-none placeholder:text-muted/60"
+          className="w-full resize-none bg-transparent text-fg outline-none placeholder:text-faint"
         />
       </div>
 
@@ -172,8 +172,8 @@ export default function ContactForm() {
           <div
             className={`rounded-xl border p-4 text-sm ${
               status.type === "success"
-                ? "border-green-500/30 bg-green-500/10 text-green-300"
-                : "border-red-500/30 bg-red-500/10 text-red-300"
+                ? "border-emerald-300 bg-emerald-50 text-emerald-700"
+                : "border-red-300 bg-red-50 text-red-700"
             }`}
           >
             {status.message}

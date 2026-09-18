@@ -18,14 +18,14 @@ export default function SectionTitle({
   return (
     <div>
       {eyebrow ? (
-        <p className="mb-4 flex items-center gap-3 font-mono text-xs uppercase tracking-[0.2em] text-accent">
-          {index ? <span className="text-muted">{index}</span> : null}
-          <span className="h-px w-8 bg-accent/50" aria-hidden="true" />
+        <p className="mb-5 flex items-center gap-3 font-mono text-[11px] uppercase tracking-[0.3em] text-accent">
+          {index ? <span className="text-faint">{index}</span> : null}
+          <span className="h-px w-10 bg-line-strong" aria-hidden="true" />
           {eyebrow}
         </p>
       ) : null}
 
-      <h2 className="max-w-3xl text-3xl font-semibold tracking-tight text-balance md:text-5xl">
+      <h2 className="max-w-3xl text-3xl font-semibold tracking-[-0.03em] text-balance md:text-5xl">
         {title}
       </h2>
 

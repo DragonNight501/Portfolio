@@ -17,17 +17,17 @@ export default function Toolbox() {
             />
           </Reveal>
 
-          <div className="grid gap-px overflow-hidden rounded-2xl border border-line bg-line sm:grid-cols-2">
+          <div className="grid gap-4 sm:grid-cols-2">
             {toolbox.map((group, index) => (
               <Reveal key={group.title} delay={index * 0.05} className="h-full">
-                <div className="h-full bg-surface p-6">
-                  <h3 className="font-mono text-xs uppercase tracking-[0.15em] text-accent">
+                <div className="card h-full rounded-2xl p-6">
+                  <h3 className="font-mono text-[11px] uppercase tracking-[0.25em] text-accent">
                     {group.title}
                   </h3>
                   <ul className="mt-5 space-y-2.5">
                     {group.items.map((item) => (
-                      <li key={item} className="flex items-center gap-3 text-fg/90">
-                        <span className="font-mono text-xs text-muted" aria-hidden="true">
+                      <li key={item} className="flex items-center gap-3 text-fg">
+                        <span className="font-mono text-xs text-faint" aria-hidden="true">
                           →
                         </span>
                         {item}

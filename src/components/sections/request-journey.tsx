@@ -6,7 +6,6 @@ import { ArrowLeft, ArrowRight } from "lucide-react";
 import Container from "@/components/ui/container";
 import SectionTitle from "@/components/ui/section-title";
 import Reveal from "@/components/ui/reveal";
-import { buttonStyles } from "@/components/ui/button";
 import { requestJourney } from "@/data/request-journey";
 import { cn } from "@/lib/utils";
 
@@ -60,12 +59,17 @@ export default function RequestJourney() {
         </Reveal>
 
         <Reveal delay={0.08}>
-          <div className="mt-14 grid overflow-hidden rounded-2xl border border-line-strong bg-surface lg:grid-cols-[320px_1fr]">
+          <div className="inlay relative mt-14 grid overflow-hidden rounded-2xl lg:grid-cols-[320px_1fr]">
+            <div
+              className="pointer-events-none absolute -top-24 right-0 h-64 w-96 rounded-full bg-accent-soft/20 blur-[90px]"
+              aria-hidden="true"
+            />
+
             <div
               role="tablist"
               aria-label="Steps of a web request"
               aria-orientation="vertical"
-              className="flex gap-1 overflow-x-auto [scrollbar-width:none] border-b border-line p-3 lg:flex-col lg:overflow-visible lg:border-r lg:border-b-0"
+              className="relative flex gap-1 overflow-x-auto [scrollbar-width:none] border-b border-white/10 p-3 lg:flex-col lg:overflow-visible lg:border-r lg:border-b-0"
             >
               {requestJourney.map((item, index) => {
                 const isActive = index === active;
@@ -87,18 +91,18 @@ export default function RequestJourney() {
                     className={cn(
                       "flex shrink-0 items-center gap-3 rounded-xl px-3 py-2.5 text-left text-sm transition focus-visible:outline-2 focus-visible:outline-accent",
                       isActive
-                        ? "bg-surface-2 text-fg"
-                        : "text-muted hover:bg-white/[0.03] hover:text-fg",
+                        ? "bg-white/10 text-white"
+                        : "text-white/50 hover:bg-white/[0.06] hover:text-white/80",
                     )}
                   >
                     <span
                       className={cn(
                         "grid h-7 w-7 shrink-0 place-items-center rounded-lg border font-mono text-xs transition",
                         isActive
-                          ? "border-accent/60 bg-accent-strong/10 text-accent"
+                          ? "border-cyan/60 bg-cyan/10 text-cyan"
                           : index < active
-                            ? "border-line-strong text-accent/70"
-                            : "border-line text-muted",
+                            ? "border-white/25 text-cyan/70"
+                            : "border-white/15 text-white/40",
                       )}
                     >
                       {index + 1}
@@ -115,49 +119,49 @@ export default function RequestJourney() {
               id="journey-panel"
               role="tabpanel"
               aria-labelledby={`journey-tab-${active}`}
-              className="flex min-h-[420px] flex-col p-6 md:p-10"
+              className="relative flex min-h-[420px] flex-col p-6 md:p-10"
             >
               <div
-                className="h-1 overflow-hidden rounded-full bg-line"
+                className="h-px overflow-hidden rounded-full bg-white/15"
                 aria-hidden="true"
               >
                 <div
-                  className="h-full rounded-full bg-gradient-to-r from-accent-strong to-violet transition-[width] duration-500"
+                  className="h-full rounded-full bg-gradient-to-r from-accent-soft to-cyan transition-[width] duration-500"
                   style={{ width: `${((active + 1) / requestJourney.length) * 100}%` }}
                 />
               </div>
 
               <div key={active} className="animate-[fadeIn_0.35s_ease-out]">
                 <div className="mt-8 flex flex-wrap items-center gap-2 font-mono text-xs">
-                  <span className="text-muted">
+                  <span className="text-white/40">
                     step {String(active + 1).padStart(2, "0")}/
                     {String(requestJourney.length).padStart(2, "0")}
                   </span>
-                  <span className="rounded-md border border-accent/40 bg-accent-strong/10 px-2 py-1 text-accent">
+                  <span className="rounded-md border border-cyan/40 bg-cyan/10 px-2 py-1 text-cyan">
                     {step.layer}
                   </span>
-                  <span className="rounded-md border border-line px-2 py-1 text-muted">
+                  <span className="rounded-md border border-white/15 px-2 py-1 text-white/45">
                     {step.where}
                   </span>
                 </div>
 
-                <h3 className="mt-6 text-2xl font-semibold tracking-tight md:text-3xl">
+                <h3 className="mt-6 text-2xl font-semibold tracking-[-0.03em] text-white md:text-3xl">
                   {step.title}
                 </h3>
 
-                <p className="mt-5 max-w-2xl text-base leading-8 text-muted md:text-lg">
+                <p className="mt-5 max-w-2xl text-base leading-8 text-white/60 md:text-lg">
                   {step.explanation}
                 </p>
 
                 <div className="mt-8">
-                  <p className="font-mono text-xs uppercase tracking-[0.15em] text-muted">
+                  <p className="font-mono text-[11px] uppercase tracking-[0.25em] text-white/35">
                     Concepts involved
                   </p>
                   <ul className="mt-3 flex flex-wrap gap-2">
                     {step.concepts.map((concept) => (
                       <li
                         key={concept}
-                        className="rounded-lg border border-line-strong bg-ink/60 px-3 py-1.5 text-sm text-fg"
+                        className="rounded-lg border border-white/12 bg-white/[0.05] px-3 py-1.5 text-sm text-white/85"
                       >
                         {concept}
                       </li>
@@ -171,7 +175,7 @@ export default function RequestJourney() {
                   type="button"
                   onClick={() => select(active - 1)}
                   disabled={active === 0}
-                  className={buttonStyles("secondary", "px-4 py-2")}
+                  className="inline-flex items-center gap-2 rounded-lg border border-white/15 px-4 py-2 text-sm text-white/70 transition hover:border-white/35 hover:text-white disabled:cursor-not-allowed disabled:opacity-35"
                 >
                   <ArrowLeft className="h-4 w-4" />
                   Previous
@@ -181,7 +185,7 @@ export default function RequestJourney() {
                   <button
                     type="button"
                     onClick={() => select(0)}
-                    className={buttonStyles("secondary", "px-4 py-2")}
+                    className="inline-flex items-center gap-2 rounded-lg border border-white/15 px-4 py-2 text-sm text-white/70 transition hover:border-white/35 hover:text-white"
                   >
                     Start over
                   </button>
@@ -189,7 +193,7 @@ export default function RequestJourney() {
                   <button
                     type="button"
                     onClick={() => select(active + 1)}
-                    className={buttonStyles("primary", "px-4 py-2")}
+                    className="inline-flex items-center gap-2 rounded-lg bg-white px-4 py-2 text-sm font-medium text-void transition hover:bg-cyan"
                   >
                     Next step
                     <ArrowRight className="h-4 w-4" />

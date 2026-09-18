@@ -1,6 +1,6 @@
 import { ArrowRight } from "lucide-react";
-import GithubIcon from "@/components/ui/github-icon";
 import Container from "@/components/ui/container";
+import GithubIcon from "@/components/ui/github-icon";
 import { buttonStyles } from "@/components/ui/button";
 import Reveal from "@/components/ui/reveal";
 import { siteConfig, systemLayers } from "@/data/site";
@@ -18,35 +18,39 @@ export default function Hero() {
     <section className="relative overflow-hidden pt-16 pb-24 md:pt-24 md:pb-32">
       <div className="bg-grid pointer-events-none absolute inset-0" aria-hidden="true" />
       <div
-        className="pointer-events-none absolute -top-40 left-1/2 h-[480px] w-[900px] -translate-x-1/2 rounded-full bg-accent-strong/10 blur-[120px]"
+        className="pointer-events-none absolute -top-56 left-1/4 h-[520px] w-[720px] animate-[drift_18s_ease-in-out_infinite] rounded-full bg-accent/15 blur-[130px]"
+        aria-hidden="true"
+      />
+      <div
+        className="pointer-events-none absolute -top-40 right-0 h-[420px] w-[560px] animate-[drift_22s_ease-in-out_infinite_reverse] rounded-full bg-cyan/15 blur-[130px]"
         aria-hidden="true"
       />
 
       <Container className="relative">
-        <div className="grid items-center gap-14 lg:grid-cols-[1.15fr_1fr]">
+        <div className="grid items-center gap-14 lg:grid-cols-[1.1fr_1fr]">
           <Reveal>
-            <p className="inline-flex items-center gap-2 rounded-full border border-line-strong bg-surface/80 px-3 py-1.5 font-mono text-xs text-muted">
-              <span className="relative flex h-2 w-2">
-                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-accent opacity-60" />
-                <span className="relative inline-flex h-2 w-2 rounded-full bg-accent" />
+            <p className="inline-flex items-center gap-2 rounded-full border border-line-strong bg-surface/70 px-3 py-1.5 font-mono text-[11px] tracking-tight text-muted backdrop-blur">
+              <span className="relative flex h-1.5 w-1.5">
+                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-accent opacity-70" />
+                <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-accent" />
               </span>
               Open to opportunities
             </p>
 
-            <p className="mt-8 font-mono text-sm text-accent">
+            <p className="mt-8 font-mono text-xs uppercase tracking-[0.3em] text-accent">
               {siteConfig.name}
             </p>
 
-            <h1 className="mt-4 text-4xl font-semibold leading-[1.05] tracking-tight text-balance sm:text-5xl md:text-6xl">
+            <h1 className="mt-5 text-4xl font-semibold leading-[1.02] tracking-[-0.04em] text-balance sm:text-5xl md:text-[4.2rem]">
               I understand the whole system,{" "}
               <span className="text-gradient">not just the code.</span>
             </h1>
 
-            <p className="mt-6 max-w-xl text-base leading-7 text-muted md:text-lg md:leading-8">
+            <p className="mt-7 max-w-xl text-base leading-7 text-muted md:text-lg md:leading-8">
               {siteConfig.description}
             </p>
 
-            <div className="mt-9 flex flex-wrap gap-3">
+            <div className="mt-9 flex flex-wrap items-center gap-3">
               <a href="#foundations" className={buttonStyles("primary")}>
                 Explore my foundations
                 <ArrowRight className="h-4 w-4" />
@@ -69,43 +73,49 @@ export default function Hero() {
               {stats.map((stat) => (
                 <div key={stat.label}>
                   <dt className="sr-only">{stat.label}</dt>
-                  <dd className="font-mono text-3xl font-semibold text-fg">
+                  <dd className="font-mono text-3xl font-medium tracking-tight">
                     {stat.value.padStart(2, "0")}
                   </dd>
-                  <dd className="mt-1 text-xs text-muted">{stat.label}</dd>
+                  <dd className="mt-1 text-xs text-faint">{stat.label}</dd>
                 </div>
               ))}
             </dl>
           </Reveal>
 
           <Reveal delay={0.12}>
-            <figure className="rounded-2xl border border-line-strong bg-surface/90 shadow-2xl shadow-black/40">
-              <div className="flex items-center justify-between border-b border-line px-5 py-3">
+            <figure className="inlay relative overflow-hidden rounded-2xl">
+              <div className="bg-grid-dark pointer-events-none absolute inset-0 opacity-60" aria-hidden="true" />
+              <div
+                className="pointer-events-none absolute -top-20 -right-10 h-56 w-56 rounded-full bg-accent-soft/25 blur-[70px]"
+                aria-hidden="true"
+              />
+
+              <div className="relative flex items-center justify-between border-b border-white/10 px-5 py-3">
                 <div className="flex gap-1.5" aria-hidden="true">
-                  <span className="h-2.5 w-2.5 rounded-full bg-line-strong" />
-                  <span className="h-2.5 w-2.5 rounded-full bg-line-strong" />
-                  <span className="h-2.5 w-2.5 rounded-full bg-line-strong" />
+                  <span className="h-2 w-2 rounded-full bg-white/20" />
+                  <span className="h-2 w-2 rounded-full bg-white/20" />
+                  <span className="h-2 w-2 rounded-full bg-white/20" />
                 </div>
-                <figcaption className="font-mono text-xs text-muted">
+                <figcaption className="font-mono text-[11px] tracking-tight text-white/45">
                   the-stack.txt
                 </figcaption>
               </div>
 
-              <ol className="p-3">
+              <ol className="relative p-3">
                 {systemLayers.map((layer, index) => (
                   <li
                     key={layer.name}
-                    className="group grid grid-cols-[2.5rem_1fr] items-center gap-3 rounded-xl px-3 py-3 transition hover:bg-surface-2"
+                    className="group grid grid-cols-[2.25rem_1fr] items-center gap-3 rounded-xl px-3 py-3 transition hover:bg-white/[0.06]"
                   >
-                    <span className="font-mono text-xs text-muted transition group-hover:text-accent">
+                    <span className="font-mono text-[11px] text-white/35 transition group-hover:text-cyan">
                       L{systemLayers.length - index}
                     </span>
                     <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
                       <div>
-                        <p className="font-medium text-fg">{layer.name}</p>
-                        <p className="text-sm text-muted">{layer.detail}</p>
+                        <p className="font-medium text-white/90">{layer.name}</p>
+                        <p className="text-sm text-white/45">{layer.detail}</p>
                       </div>
-                      <p className="font-mono text-xs text-muted/80 transition group-hover:text-accent">
+                      <p className="font-mono text-[11px] text-white/30 transition group-hover:text-white/60">
                         {layer.tools}
                       </p>
                     </div>
@@ -113,8 +123,8 @@ export default function Hero() {
                 ))}
               </ol>
 
-              <p className="border-t border-line px-5 py-3 font-mono text-xs text-muted">
-                <span className="text-accent">$</span> from transistors to
+              <p className="relative border-t border-white/10 px-5 py-3 font-mono text-[11px] tracking-tight text-white/40">
+                <span className="text-cyan">$</span> from transistors to
                 interfaces — every layer matters
               </p>
             </figure>

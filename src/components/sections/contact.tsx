@@ -25,7 +25,7 @@ export default function Contact() {
   return (
     <section id="contact" className="relative overflow-hidden border-t border-line py-24 md:py-32">
       <div
-        className="pointer-events-none absolute -bottom-40 left-1/2 h-[420px] w-[800px] -translate-x-1/2 rounded-full bg-violet/10 blur-[120px]"
+        className="pointer-events-none absolute -bottom-52 left-1/2 h-[460px] w-[820px] -translate-x-1/2 animate-[drift_20s_ease-in-out_infinite] rounded-full bg-accent/12 blur-[130px]"
         aria-hidden="true"
       />
 
@@ -46,13 +46,13 @@ export default function Contact() {
                     href={channel.href}
                     target={channel.label === "GitHub" ? "_blank" : undefined}
                     rel={channel.label === "GitHub" ? "noreferrer" : undefined}
-                    className="flex items-center gap-4 rounded-xl border border-line bg-surface p-4 transition hover:border-accent/40"
+                    className="card flex items-center gap-4 rounded-xl p-4 transition hover:-translate-y-0.5 hover:border-accent/40"
                   >
-                    <span className="grid h-10 w-10 place-items-center rounded-lg border border-line-strong text-accent">
+                    <span className="inlay grid h-10 w-10 place-items-center rounded-lg text-white">
                       {channel.icon}
                     </span>
                     <span>
-                      <span className="block font-mono text-xs text-muted">
+                      <span className="block font-mono text-[11px] tracking-tight text-faint">
                         {channel.label}
                       </span>
                       <span className="block text-fg">{channel.value}</span>
@@ -64,7 +64,7 @@ export default function Contact() {
           </Reveal>
 
           <Reveal delay={0.08}>
-            <div className="rounded-2xl border border-line-strong bg-surface p-6 md:p-8">
+            <div className="card rounded-2xl p-6 md:p-8">
               <ContactForm />
             </div>
           </Reveal>

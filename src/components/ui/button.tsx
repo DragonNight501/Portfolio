@@ -10,14 +10,14 @@ type ButtonProps = {
 } & ButtonHTMLAttributes<HTMLButtonElement>;
 
 const base =
-  "inline-flex items-center justify-center gap-2 rounded-xl px-5 py-3 text-sm font-medium transition duration-200 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent disabled:cursor-not-allowed disabled:opacity-60";
+  "inline-flex items-center justify-center gap-2 rounded-lg px-5 py-3 text-sm font-medium tracking-tight transition duration-200 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent disabled:cursor-not-allowed disabled:opacity-50";
 
 const variants: Record<ButtonVariant, string> = {
   primary:
-    "bg-accent-strong text-ink hover:bg-accent shadow-[0_0_0_1px_rgb(34_211_238/0.4),0_8px_30px_-8px_rgb(34_211_238/0.5)]",
+    "bg-void text-white hover:bg-void-2 shadow-[0_10px_30px_-14px_rgb(10_12_18/0.9)]",
   secondary:
-    "border border-line-strong bg-surface text-fg hover:border-accent/50 hover:bg-surface-2",
-  ghost: "text-fg hover:bg-white/5",
+    "border border-line-strong bg-surface text-fg hover:border-accent/50 hover:text-accent",
+  ghost: "text-muted hover:bg-surface-2 hover:text-fg",
 };
 
 /**

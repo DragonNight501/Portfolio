@@ -6,7 +6,7 @@ export default function Footer() {
 
   return (
     <footer className="border-t border-line py-10">
-      <Container className="flex flex-col gap-3 font-mono text-xs text-muted md:flex-row md:items-center md:justify-between">
+      <Container className="flex flex-col gap-3 font-mono text-[11px] tracking-tight text-faint md:flex-row md:items-center md:justify-between">
         <p>
           © {year} {siteConfig.name}
         </p>
