@@ -1,6 +1,7 @@
 "use client";
 
 import type { MouseEvent } from "react";
+import { useRouter } from "next/navigation";
 import { localeCookie, localeLabels, locales } from "@/i18n/config";
 import type { Locale } from "@/i18n/config";
 import { cn } from "@/lib/utils";
@@ -17,6 +18,8 @@ type LanguageSwitcherProps = {
 };
 
 export default function LanguageSwitcher({ lang, label, className }: LanguageSwitcherProps) {
+  const router = useRouter();
+
   function handleClick(event: MouseEvent<HTMLAnchorElement>, target: Locale) {
     rememberLocale(target);
 
@@ -27,7 +30,7 @@ export default function LanguageSwitcher({ lang, label, className }: LanguageSwi
 
     // Keep the reader on the same section after switching.
     event.preventDefault();
-    window.location.assign(`/${target}${window.location.hash}`);
+    router.push(`/${target}${window.location.hash}`);
   }
 
   return (
